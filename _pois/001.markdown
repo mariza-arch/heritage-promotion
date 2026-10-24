@@ -1,7 +1,7 @@
 ---
 layout: poi
-wikidatum: Q121378
-title:  Κέρκυρα
+wikidatum: Q174552
+title:  Τεχνόπολη Αθηνών
 ---
 
 Sample text
