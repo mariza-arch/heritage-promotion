@@ -1,7 +1,7 @@
 
 ---
 # Ελληνική Βιομηχανική Κληρονομιά.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+# Πλιζ ας δουλέψει αυτή τη φορά  
 
 layout: home
 ---
