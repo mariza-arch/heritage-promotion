@@ -20,9 +20,10 @@ description: >-
   στα πλαίσια εργασίας του μαθήματος "Εργαλεία Προβολής Τουριστικού και Πολιτιστικού Προιόντος"
   του ΠΜΣ "Ψηφιακές Εφαρμογές και Καινοτομία" του Ιονίου Πανεπιστημίου.
 baseurl: "heritage-promotion" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://mariza-arch.github.io/heritage-promotion/" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
-github_username:  riggas-ionio/heritage-promotion
+github_username: Geoter711
+github_username: mariza-arch
 
 # Build settings
 markdown: kramdown
