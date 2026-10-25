@@ -149,14 +149,11 @@ title: "Σημεία ενδιαφέροντος"
           if (filename) {
             const image = card.querySelector(".place-image");
 
-            image.onload = () => {
-              image.hidden = false;
-            };
-
             image.onerror = () => {
               image.hidden = true;
             };
-
+            
+            image.hidden = false;
             image.src =
               "https://commons.wikimedia.org/wiki/Special:FilePath/" +
               encodeURIComponent(filename) +
