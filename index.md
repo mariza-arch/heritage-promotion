@@ -1,6 +1,13 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+# Καλώς ήρθατε στην Ελληνική Βιομηχανική Κληρονομιά
+
+Ανακαλύψτε την ιστορία των εργοστασίων, των βιομηχανικών μνημείων
+και των ιστορικών εγκαταστάσεων της Ελλάδας.
+
+## Εξερευνήστε τα σημεία ενδιαφέροντος
+
+Μάθετε περισσότερα για την ιστορία και την πολιτιστική αξία
+κάθε τοποθεσίας.
 
 layout: home
 ---
