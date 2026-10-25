@@ -14,8 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: "Ελληνική Βιομηχανική Κληρονομιά"
-email: inf.dig2503@ionio.gr
-email: inf.dig2510@ionio.gr
+email: inf.dig2503@ionio.gr, inf.dig2510@ionio.gr
 description: >- 
   Ο ιστοχώρος αυτός αναπτύχτηκε από τους Μαρία Ζωή Δρακακάκη και Γεώργιο Παπαδόπουλο
   στα πλαίσια εργασίας του μαθήματος "Εργαλεία Προβολής Τουριστικού και Πολιτιστικού Προιόντος"
@@ -23,8 +22,7 @@ description: >-
 baseurl: "heritage-promotion" # the subpath of your site, e.g. /blog
 url: "https://mariza-arch.github.io/heritage-promotion/" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
-github_username: mariza-arch
-github_username: Geoter711
+github_username: mariza-arch, Geoter711
 
 # Build settings
 markdown: kramdown
