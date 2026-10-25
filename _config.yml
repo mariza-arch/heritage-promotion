@@ -27,6 +27,10 @@ github_username: mariza-arch, Geoter711
 # Build settings
 markdown: kramdown
 theme: minima
+header_pages:
+  - about.md
+  - pois.md
+  - team.md
 plugins:
   - jekyll-feed
 
