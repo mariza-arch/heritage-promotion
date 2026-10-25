@@ -7,6 +7,21 @@ body {
   line-height: 1.3;
 }
 
+.poi-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.poi-image {
+  display: block;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.poi-map {
+  margin-bottom: 32px;
+}
+
 .site-header {
   background-color: #15325a;
   color: #fff;

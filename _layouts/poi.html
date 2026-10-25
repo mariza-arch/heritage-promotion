@@ -3,15 +3,14 @@ layout: default
 load_leaflet: 1
 ---
 
-<h1 style="float:right; font-size:64pt; color:#f1f1f1">{{page.title}}</h1>
-<h2 id="wikidata_title"></h2>
+<h1 class="poi-title">{{ page.title | escape }}</h1>
 <h3 id="wikidata_descr"></h3>
-<a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> <span id="wikipedia_title"> </a>
+<a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> <span id="wikipedia_title"></span></a>
 <p id="wikidata_location"></p>
 
-<img id="wikidata_img" style="width:100%; padding-bottom:5px;" />
+<img id="wikidata_img" class="poi-image" alt="{{ page.title | escape }}" />
 
-<div id="map" style="height: 180px; width:100%; background-color:lightgrey"></div>
+<div id="map" class="poi-map" style="height: 180px; width:100%; background-color:lightgrey"></div>
 
 {{ content }}
 
