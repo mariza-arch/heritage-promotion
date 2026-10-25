@@ -1,0 +1,18 @@
+.site-header {
+  background-color: #15325a;
+  color: #fff;
+}
+
+.site-header .site-title,
+.site-header .site-title:visited {
+  color: #e0e0e0;
+}
+
+.site-header .site-nav .page-link {
+  color: #fff;
+}
+
+.site-header .site-nav {
+  background-color: #15325a;
+}
+
