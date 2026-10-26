@@ -33,6 +33,7 @@ header_pages:
   - team.md
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 collections:
   pois:
