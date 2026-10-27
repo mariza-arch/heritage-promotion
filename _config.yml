@@ -14,13 +14,16 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: "Ελληνική Βιομηχανική Κληρονομιά"
+tagline: "Ανακαλύπτοντας τη βιομηχανική ιστορία της Ελλάδας"
+lang: el
+locale: el_GR
 email: inf.dig2503@ionio.gr, inf.dig2510@ionio.gr
 description: >- 
   Ο ιστοχώρος αυτός αναπτύχτηκε από τους Μαρία Ζωή Δρακακάκη και Γεώργιο Παπαδόπουλο
   στα πλαίσια εργασίας του μαθήματος "Εργαλεία Προβολής Τουριστικού και Πολιτιστικού Προιόντος"
   του ΠΜΣ "Ψηφιακές Εφαρμογές και Καινοτομία" του Ιονίου Πανεπιστημίου.
-baseurl: "heritage-promotion" # the subpath of your site, e.g. /blog
-url: "https://mariza-arch.github.io/heritage-promotion/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/heritage-promotion" # the subpath of your site, e.g. /blog
+url: "https://mariza-arch.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username: mariza-arch, Geoter711
 
