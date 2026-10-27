@@ -48,3 +48,55 @@ body {
 .site-footer .footer-heading {
   color: #e0e0e0;
 }
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-card {
+  padding: 24px;
+  background-color: #fff;
+  border: 1px solid #d8dfe5;
+  border-radius: 8px;
+  overflow-wrap: break-word;
+}
+
+.team-card h2 {
+  margin-bottom: 8px;
+  color: #15325a;
+}
+
+.team-role {
+  margin-bottom: 20px;
+  color: #586571;
+  font-size: 0.9rem;
+}
+
+.team-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-links li + li {
+  margin-top: 10px;
+}
+
+.team-links span {
+  color: #586571;
+}
+
+.team-links a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.team-links a:focus-visible {
+  outline: 2px solid #15325a;
+  outline-offset: 3px;
+}
