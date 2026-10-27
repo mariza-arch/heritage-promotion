@@ -14,6 +14,14 @@ load_leaflet: 1
 
 {{ content }}
 
+{% if page.ar_url %}
+<section class="poi-ar" aria-labelledby="poi-ar-title">
+  <h2 id="poi-ar-title">Εξερευνήστε το μουσείο με επαυξημένη πραγματικότητα</h2>
+  <p>Σαρώστε την εξωτερική φωτογραφία του μουσείου και ανακαλύψτε εικόνες από τη συλλογή του.</p>
+  <a class="poi-ar-link" href="{{ page.ar_url | relative_url }}">Έναρξη εμπειρίας AR →</a>
+</section>
+{% endif %}
+
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Wikidata_Stamp_Rec_Light.svg" style="float:right; width:100px" />
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

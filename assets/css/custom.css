@@ -2,6 +2,23 @@ body {
   background-color: #f3f5f6;
 }
 
+.poi-ar {
+  margin: 32px 0;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #d8dfe5;
+  border-radius: 8px;
+}
+
+.poi-ar-link,
+.poi-ar-link:visited {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #15325a;
+  color: #fff;
+  border-radius: 5px;
+}
+
 .page-content h2 {
   font-size: 1.5rem;
   line-height: 1.3;

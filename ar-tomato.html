@@ -1,0 +1,109 @@
+---
+layout: null
+permalink: /ar/tomato-museum/
+title: Εμπειρία AR — Βιομηχανικό Μουσείο Τομάτας
+photos:
+  - file: photo-01.jpg
+    width: 0.2122
+    height: 0.2000
+    caption: "Τοματοπολτός Σαντορίνης"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_Santorini_tomato_paste.jpg"
+  - file: photo-02.jpg
+    width: 0.2176
+    height: 0.2000
+    caption: "Φυντάνια σαντορινιάς τομάτας στο μουσείο"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_Santorini_tomato_seedlings.jpg"
+  - file: photo-03.jpg
+    width: 0.1125
+    height: 0.2000
+    caption: "Καλάθια μεταφοράς της τομάτας"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_tomato_baskets.jpg"
+  - file: photo-04.jpg
+    width: 0.2800
+    height: 0.1575
+    caption: "Χειροκίνητη επεξεργασία της τομάτας"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_tomatoes_were_put_in_the_hopper_at_the_back,_then_the_flesh_was_extracted_before_going_into_the_pot_at_the_end_closest_(side_view).jpg"
+  - file: photo-05.jpg
+    width: 0.1125
+    height: 0.2000
+    caption: "Μηχανή παραγωγής ηλεκτρικής ενέργειας για το εργοστάσιο"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_stationary_engine_used_to_generate_electricity_for_factory.jpg"
+  - file: photo-06.jpg
+    width: 0.1125
+    height: 0.2000
+    caption: "Μηχανήματα επεξεργασίας της τομάτας"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_Tomato_processing_machinery_2.jpg"
+  - file: photo-07.jpg
+    width: 0.1125
+    height: 0.2000
+    caption: "Κονσέρβες τοματοπολτού σε διάφορα μεγέθη"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_a_range_of_sizes_of_can_for_tomato_paste.jpg"
+  - file: photo-08.jpg
+    width: 0.1125
+    height: 0.2000
+    caption: "Το εργοστάσιο κονσερβοποιούσε και αρακά"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_the_factory_also_canned_peas.jpg"
+  - file: photo-09.jpg
+    width: 0.1125
+    height: 0.2000
+    caption: "Χυμός τομάτας με τόνικ στο μπαρ του μουσείου"
+    source: "https://commons.wikimedia.org/wiki/File:Tomato_%26_Tonic.jpg"
+---
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/ar-tomato.css' | relative_url }}">
+</head>
+<body>
+  <main>
+    <section id="intro">
+      <a href="{{ '/pois/005.html' | relative_url }}">← Πίσω στο μουσείο</a>
+      <h1>Βιομηχανικό Μουσείο Τομάτας «Δ. Νομικός» — AR</h1>
+      <p>Ανοίξτε την εικόνα-στόχο σε δεύτερη οθόνη ή εκτυπώστε την. Πατήστε «Έναρξη AR», επιτρέψτε την κάμερα και στρέψτε την στην εικόνα. Οι εννέα φωτογραφίες εμφανίζονται μαζί σε ένα πλέγμα πάνω στην εικόνα-στόχο.</p>
+      <a href="{{ '/assets/ar/tomato-museum/anchor.jpg' | relative_url }}" target="_blank" rel="noopener">Άνοιγμα εικόνας-στόχου ↗</a>
+      <img id="target-image" src="{{ '/assets/ar/tomato-museum/anchor.jpg' | relative_url }}" alt="Εξωτερική όψη του μουσείου — εικόνα αναγνώρισης AR" width="1200" height="675">
+      <button id="start" type="button">Έναρξη AR</button>
+      <p>Η κάμερα απαιτεί HTTPS ή localhost. Κρατήστε ολόκληρη την εικόνα στο πλάνο, χωρίς αντανακλάσεις.</p>
+      <p class="credits">Φωτογραφίες: Lajmmoore / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Μείωση μεγέθους, χωρίς περικοπή. <a href="https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_exterior_2.jpg">Πηγή εικόνας-στόχου</a> · <a href="https://en.wikipedia.org/w/index.php?title=Tomato_Industrial_Museum_D._Nomikos&amp;oldid=1345352695">Άρθρο Wikipedia</a>.</p>
+    </section>
+    <p id="status" role="status" aria-live="polite">Έτοιμο για σάρωση.</p>
+  </main>
+  <div id="viewer" hidden>
+    <a-scene embedded mindar-image="imageTargetSrc: {{ '/assets/ar/tomato-museum/targets.mind' | relative_url }}; autoStart: false; uiLoading: no; uiError: no" renderer="colorManagement: true; alpha: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets id="photos">
+        {% for photo in page.photos %}
+        <img id="photo-{{ forloop.index0 }}" src="{{ '/assets/ar/tomato-museum/' | append: photo.file | relative_url }}" alt="{{ photo.caption | escape }}">
+        {% endfor %}
+      </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
+      <a-entity id="anchor" mindar-image-target="targetIndex: 0">
+        <a-plane color="#ffffff" width="1" height="0.74" position="0 0 0.01"></a-plane>
+        {% for photo in page.photos %}
+        {% assign column = forloop.index0 | modulo: 3 %}
+        {% assign row = forloop.index0 | divided_by: 3 %}
+        <a-image src="#photo-{{ forloop.index0 }}"
+          width="{{ photo.width }}" height="{{ photo.height }}"
+          position="{{ column | times: 0.32 | minus: 0.32 }} {{ row | times: -0.24 | plus: 0.24 }} 0.02"></a-image>
+        {% endfor %}
+      </a-entity>
+    </a-scene>
+    <button id="close" type="button">Κλείσιμο</button>
+    <details id="credits">
+      <summary>Φωτογραφίες και πηγές</summary>
+      <p>Lajmmoore · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Μείωση μεγέθους, χωρίς περικοπή.</p>
+      <ol>
+        {% for photo in page.photos %}
+        <li><a href="{{ photo.source | escape }}" target="_blank" rel="noopener">{{ photo.caption | escape }}</a></li>
+        {% endfor %}
+      </ol>
+    </details>
+  </div>
+  <noscript>Για την εμπειρία AR απαιτείται JavaScript.</noscript>
+  <script src="{{ '/assets/js/ar-tomato.js' | relative_url }}" defer></script>
+</body>
+</html>
