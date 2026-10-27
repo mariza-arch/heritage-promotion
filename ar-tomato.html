@@ -57,21 +57,23 @@ photos:
   {% seo %}
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/ar-tomato.css' | relative_url }}">
 </head>
 <body>
-  <main>
-    <section id="intro">
+  <main class="wrapper">
+    <section id="intro" class="card card-body">
       <a href="{{ '/pois/005.html' | relative_url }}">← Πίσω στο μουσείο</a>
       <h1>Βιομηχανικό Μουσείο Τομάτας «Δ. Νομικός» — AR</h1>
       <p>Ανοίξτε την εικόνα-στόχο σε δεύτερη οθόνη ή εκτυπώστε την. Πατήστε «Έναρξη AR», επιτρέψτε την κάμερα και στρέψτε την στην εικόνα. Οι εννέα φωτογραφίες εμφανίζονται μαζί σε ένα πλέγμα πάνω στην εικόνα-στόχο.</p>
-      <a href="{{ '/assets/ar/tomato-museum/anchor.jpg' | relative_url }}" target="_blank" rel="noopener">Άνοιγμα εικόνας-στόχου ↗</a>
-      <img id="target-image" src="{{ '/assets/ar/tomato-museum/anchor.jpg' | relative_url }}" alt="Εξωτερική όψη του μουσείου — εικόνα αναγνώρισης AR" width="1200" height="675">
-      <button id="start" type="button">Έναρξη AR</button>
-      <p>Η κάμερα απαιτεί HTTPS ή localhost. Κρατήστε ολόκληρη την εικόνα στο πλάνο, χωρίς αντανακλάσεις.</p>
+      <a class="button" href="{{ '/assets/ar/tomato-museum/anchor.jpg' | relative_url }}" target="_blank" rel="noopener">Άνοιγμα εικόνας-στόχου ↗</a>
+      <img id="target-image" class="poi-image" src="{{ '/assets/ar/tomato-museum/anchor.jpg' | relative_url }}" alt="Εξωτερική όψη του μουσείου — εικόνα αναγνώρισης AR" width="1200" height="675">
+      <button id="start" class="button" type="button">Έναρξη AR</button>
+      <p>Κρατήστε ολόκληρη την εικόνα στο πλάνο, χωρίς αντανακλάσεις.</p>
       <p class="credits">Φωτογραφίες: Lajmmoore / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Μείωση μεγέθους, χωρίς περικοπή. <a href="https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_exterior_2.jpg">Πηγή εικόνας-στόχου</a> · <a href="https://en.wikipedia.org/w/index.php?title=Tomato_Industrial_Museum_D._Nomikos&amp;oldid=1345352695">Άρθρο Wikipedia</a>.</p>
     </section>
-    <p id="status" role="status" aria-live="polite">Έτοιμο για σάρωση.</p>
+    <p id="status" class="card card-body" role="status" aria-live="polite"></p>
   </main>
   <div id="viewer" hidden>
     <a-scene embedded mindar-image="imageTargetSrc: {{ '/assets/ar/tomato-museum/targets.mind' | relative_url }}; autoStart: false; uiLoading: no; uiError: no" renderer="colorManagement: true; alpha: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
@@ -92,8 +94,8 @@ photos:
         {% endfor %}
       </a-entity>
     </a-scene>
-    <button id="close" type="button">Κλείσιμο</button>
-    <details id="credits">
+    <button id="close" class="button" type="button">Κλείσιμο</button>
+    <details id="credits" class="card card-body">
       <summary>Φωτογραφίες και πηγές</summary>
       <p>Lajmmoore · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Μείωση μεγέθους, χωρίς περικοπή.</p>
       <ol>

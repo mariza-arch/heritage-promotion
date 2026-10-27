@@ -10,13 +10,32 @@ body {
   border-radius: 8px;
 }
 
-.poi-ar-link,
-.poi-ar-link:visited {
+.button,
+.button:visited {
   display: inline-block;
   padding: 12px 18px;
+  border: 0;
   background: #15325a;
   color: #fff;
   border-radius: 5px;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button[hidden] {
+  display: none;
+}
+
+.button:hover {
+  color: #fff;
+  text-decoration: none;
+  background: #224776;
+}
+
+.button:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
 }
 
 .page-content h2 {
@@ -32,6 +51,7 @@ body {
 .poi-image {
   display: block;
   width: 100%;
+  height: auto;
   margin-bottom: 32px;
 }
 
@@ -66,46 +86,95 @@ body {
   color: #e0e0e0;
 }
 
-.team-list {
+.places-heading {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.cards-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  padding: 12px;
+}
+
+.card {
+  overflow: hidden;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-image {
+  display: block;
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  background: #eee;
+}
+
+.card-image[hidden] {
+  display: none;
+}
+
+.card-body {
+  padding: 18px;
+}
+
+.card-title {
+  margin: 0 0 12px;
+  color: #0f172a;
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+.card-description {
+  margin: 0;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.card-link:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: -3px;
+}
+
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-list {
   margin: 28px 0 0;
-  padding: 0;
   list-style: none;
 }
 
 .team-card {
-  padding: 24px;
-  background-color: #fff;
-  border: 1px solid #d8dfe5;
-  border-radius: 8px;
-  overflow-wrap: break-word;
-}
-
-.team-card h2 {
-  margin-bottom: 8px;
-  color: #15325a;
+  overflow-wrap: anywhere;
 }
 
 .team-role {
-  margin-bottom: 20px;
-  color: #586571;
-  font-size: 0.9rem;
+  margin-bottom: 12px;
 }
 
 .team-links {
   margin: 0;
   padding: 0;
   list-style: none;
+  color: #475569;
 }
 
 .team-links li + li {
   margin-top: 10px;
-}
-
-.team-links span {
-  color: #586571;
 }
 
 .team-links a {
@@ -114,6 +183,6 @@ body {
 }
 
 .team-links a:focus-visible {
-  outline: 2px solid #15325a;
+  outline: 3px solid #2563eb;
   outline-offset: 3px;
 }

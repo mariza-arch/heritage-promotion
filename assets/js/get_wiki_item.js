@@ -14,10 +14,13 @@ function get_wikidatum(id){
           if (description)
             $('#wikidata_descr').text( get_first_upper(description) );
 
-          let elwikititle = get_json_value(['entities',id,'sitelinks','elwiki','title'], data);
-          if (elwikititle) {
-            $('#wikidata_href').attr('href', 'https://el.wikipedia.org/wiki/'+elwikititle );
-            $('#wikipedia_title').text('https://el.wikipedia.org/wiki/'+elwikititle );
+          const sitelinks = get_json_value(['entities',id,'sitelinks'], data) || {};
+          const wikiLanguage = sitelinks.elwiki ? 'el' : 'en';
+          const wikiTitle = (sitelinks.elwiki || sitelinks.enwiki)?.title;
+          if (wikiTitle) {
+            $('#wikidata_href')
+              .attr('href', `https://${wikiLanguage}.wikipedia.org/wiki/${encodeURIComponent(wikiTitle)}`)
+              .prop('hidden', false);
           }
 
 
@@ -28,7 +31,7 @@ function get_wikidatum(id){
               var map = L.map('map', {fullscreenControl: { pseudoFullscreen: true } }).setView([latlong.latitude, latlong.longitude], 13);
               L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '© OpenStreetMap'}).addTo(map);
               var marker = L.marker([latlong.latitude, latlong.longitude]).addTo(map);
-              marker.bindPopup(elwikititle).openPopup();
+              marker.bindPopup(wikiTitle || '').openPopup();
           }
 
           let image = get_json_value(['entities',id,'claims','P18', 0,'mainsnak', 'datavalue', 'value'], data);

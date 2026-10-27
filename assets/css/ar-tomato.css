@@ -1,29 +1,7 @@
-body {
-  margin: 0;
-  font: 16px/1.6 system-ui, sans-serif;
-}
-
 [hidden],
+#status:empty,
 body.active #intro {
   display: none !important;
-}
-
-main {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-}
-
-button {
-  padding: 10px 16px;
-  min-height: 44px;
-  font: inherit;
-  cursor: pointer;
-}
-
-#target-image {
-  width: 100%;
-  height: auto;
 }
 
 #viewer {
@@ -59,12 +37,6 @@ body.active #status {
   max-height: 35vh;
   overflow: auto;
   font-size: 0.8rem;
-}
-
-#credits,
-#status {
-  padding: 12px;
-  background: white;
 }
 
 body.active #status {

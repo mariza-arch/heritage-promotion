@@ -5,7 +5,7 @@ load_leaflet: 1
 
 <h1 class="poi-title">{{ page.title | escape }}</h1>
 <h3 id="wikidata_descr"></h3>
-<a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> <span id="wikipedia_title"></span></a>
+<a id="wikidata_href" class="button" target="_blank" rel="noopener" hidden>Δείτε στη Wikipedia ↗</a>
 <p id="wikidata_location"></p>
 
 <img id="wikidata_img" class="poi-image" alt="{{ page.title | escape }}" />
@@ -18,7 +18,7 @@ load_leaflet: 1
 <section class="poi-ar" aria-labelledby="poi-ar-title">
   <h2 id="poi-ar-title">Εξερευνήστε το μουσείο με επαυξημένη πραγματικότητα</h2>
   <p>Σαρώστε την εξωτερική φωτογραφία του μουσείου και ανακαλύψτε εικόνες από τη συλλογή του.</p>
-  <a class="poi-ar-link" href="{{ page.ar_url | relative_url }}">Έναρξη εμπειρίας AR →</a>
+  <a class="button" href="{{ page.ar_url | relative_url }}">Έναρξη εμπειρίας AR →</a>
 </section>
 {% endif %}
 
