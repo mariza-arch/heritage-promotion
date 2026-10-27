@@ -9,6 +9,14 @@ body.active #intro {
   inset: 0;
 }
 
+#target-image {
+  margin-top: 20px;
+}
+
+#start {
+  margin-bottom: 20px;
+}
+
 a-scene {
   width: 100%;
   height: 100%;
@@ -28,6 +36,12 @@ body.active #status {
 #close {
   top: 12px;
   right: 12px;
+}
+
+#credits,
+body.active #status {
+  padding: 12px;
+  background: white;
 }
 
 #credits {

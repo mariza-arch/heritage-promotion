@@ -63,7 +63,7 @@ photos:
 </head>
 <body>
   <main class="wrapper">
-    <section id="intro" class="card card-body">
+    <section id="intro">
       <a href="{{ '/pois/005.html' | relative_url }}">← Πίσω στο μουσείο</a>
       <h1>Βιομηχανικό Μουσείο Τομάτας «Δ. Νομικός» — AR</h1>
       <p>Ανοίξτε την εικόνα-στόχο σε δεύτερη οθόνη ή εκτυπώστε την. Πατήστε «Έναρξη AR», επιτρέψτε την κάμερα και στρέψτε την στην εικόνα. Οι εννέα φωτογραφίες εμφανίζονται μαζί σε ένα πλέγμα πάνω στην εικόνα-στόχο.</p>
@@ -73,7 +73,7 @@ photos:
       <p>Κρατήστε ολόκληρη την εικόνα στο πλάνο, χωρίς αντανακλάσεις.</p>
       <p class="credits">Φωτογραφίες: Lajmmoore / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Μείωση μεγέθους, χωρίς περικοπή. <a href="https://commons.wikimedia.org/wiki/File:Tomato_Industrial_Museum_D._Nomikos_-_exterior_2.jpg">Πηγή εικόνας-στόχου</a> · <a href="https://en.wikipedia.org/w/index.php?title=Tomato_Industrial_Museum_D._Nomikos&amp;oldid=1345352695">Άρθρο Wikipedia</a>.</p>
     </section>
-    <p id="status" class="card card-body" role="status" aria-live="polite"></p>
+    <p id="status" role="status" aria-live="polite"></p>
   </main>
   <div id="viewer" hidden>
     <a-scene embedded mindar-image="imageTargetSrc: {{ '/assets/ar/tomato-museum/targets.mind' | relative_url }}; autoStart: false; uiLoading: no; uiError: no" renderer="colorManagement: true; alpha: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
@@ -95,7 +95,7 @@ photos:
       </a-entity>
     </a-scene>
     <button id="close" class="button" type="button">Κλείσιμο</button>
-    <details id="credits" class="card card-body">
+    <details id="credits">
       <summary>Φωτογραφίες και πηγές</summary>
       <p>Lajmmoore · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Μείωση μεγέθους, χωρίς περικοπή.</p>
       <ol>
