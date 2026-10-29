@@ -4,7 +4,7 @@
 
   try {
     const map = L.map('all-pois-map', {
-      scrollWheelZoom: false,
+      scrollWheelZoom: true,
       maxZoom: 19
     }).setView([39.1, 23.4], 6);
 
@@ -59,7 +59,7 @@
     });
 
     const count = markers.getLayers().length;
-    status.textContent = `${count} από ${pois.length} σημεία στον χάρτη.`;
+    status.textContent = '';
     if (count) map.fitBounds(markers.getBounds(), { padding: [24, 24], maxZoom: 12 });
   } catch (error) {
     status.textContent = 'Δεν ήταν δυνατή η φόρτωση του χάρτη. Δοκιμάστε να ανανεώσετε τη σελίδα.';

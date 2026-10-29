@@ -64,6 +64,10 @@ body {
   border-radius: 8px;
 }
 
+#map-status:empty {
+  display: none;
+}
+
 #map-status {
   margin: 12px 0 24px;
   color: #475569;
