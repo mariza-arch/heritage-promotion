@@ -32,7 +32,7 @@ title: "Σημεία ενδιαφέροντος"
     )];
 
     for (let start = 0; start < ids.length; start += 10) {
-      const batch = ids.slice(start, start + 50);
+      const batch = ids.slice(start, start + 10);
 
       const params = new URLSearchParams({
         action: "wbgetentities",
@@ -45,7 +45,8 @@ title: "Σημεία ενδιαφέροντος"
 
       try {
         const response = await fetch(
-          "https://www.wikidata.org/w/api.php?" + params
+          "https://www.wikidata.org/w/api.php?" + params,
+          { signal: AbortSignal.timeout(15000) }
         );
 
         if (!response.ok) {
@@ -95,5 +96,6 @@ title: "Σημεία ενδιαφέροντος"
         console.error("Could not load Wikidata cards:", error);
       }
     }
+
   })();
 </script>

@@ -59,6 +59,24 @@ body {
   margin-bottom: 32px;
 }
 
+#all-pois-map {
+  height: 320px;
+  border-radius: 8px;
+}
+
+#map-status {
+  margin: 12px 0 24px;
+  color: #475569;
+}
+
+.map-popup img {
+  display: block;
+  width: 180px;
+  height: 110px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
 .site-header {
   background-color: #15325a;
   color: #fff;
