@@ -14,6 +14,13 @@ function get_wikidatum(id){
           if (description)
             $('#wikidata_descr').text( get_first_upper(description) );
 
+          const officialWebsite = get_official_website(data.entities?.[id]);
+          if (officialWebsite) {
+            $('#poi-official-website')
+              .attr('href', officialWebsite)
+              .prop('hidden', false);
+          }
+
           const sitelinks = get_json_value(['entities',id,'sitelinks'], data) || {};
           const wikiLanguage = sitelinks.elwiki ? 'el' : 'en';
           const wikiTitle = (sitelinks.elwiki || sitelinks.enwiki)?.title;
@@ -45,6 +52,29 @@ function get_wikidatum(id){
         .fail(function( jqxhr, textStatus, error ) {
             console.log( "Error getting wikidata. ", textStatus, error );
         });
+}
+
+function get_official_website(entity) {
+    const candidates = (entity?.claims?.P856 || [])
+      .filter(statement => statement.rank !== 'deprecated' && !statement.qualifiers?.P582)
+      .map(statement => {
+          const value = statement.mainsnak?.datavalue?.value;
+          if (typeof value !== 'string') return null;
+          try {
+              const url = new URL(value);
+              if (!['http:', 'https:'].includes(url.protocol)) return null;
+              return {
+                  url: url.href,
+                  preferred: statement.rank === 'preferred',
+                  greek: statement.qualifiers?.P407?.some(snak => snak.datavalue?.value?.id === 'Q9129') || false
+              };
+          } catch {
+              return null;
+          }
+      })
+      .filter(Boolean)
+      .sort((a, b) => Number(b.preferred) - Number(a.preferred) || Number(b.greek) - Number(a.greek));
+    return candidates[0]?.url || null;
 }
 
 function get_thumbnail(photoname, size){

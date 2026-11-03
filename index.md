@@ -12,7 +12,7 @@ load_markercluster: true
 
 Εξερευνήστε παλιά εργοστάσια, μύλους και μεταλλευτικές εγκαταστάσεις. Γνωρίστε τους ανθρώπους, τις τεχνολογίες και τις ιστορίες που διαμόρφωσαν την παραγωγή και την καθημερινή ζωή κάθε τόπου.
 
-<div class="home-explore">
+<div class="button-group home-explore">
   <a class="button button-primary" href="{{ '/pois.html' | relative_url }}">Εξερευνήστε τα σημεία →</a>
   <a class="button button-outline" href="{{ '/about/' | relative_url }}">Σχετικά με την ιστοσελίδα</a>
 </div>
@@ -23,10 +23,10 @@ load_markercluster: true
 
 Επιλέξτε έναν δείκτη για να γνωρίσετε τον τόπο και την ιστορία του. Οι αριθμοί ομαδοποιούν κοντινά σημεία· επιλέξτε τους για μεγέθυνση.
 
-<div class="surface-panel home-map-panel">
+<div class="surface-panel map-panel">
   {% include all-pois-map.html %}
 
-  <div class="home-map-footer">
+  <div class="map-panel-footer">
     <p>Περιηγηθείτε στους τόπους με φωτογραφίες και σύντομες περιγραφές.</p>
     <a class="button button-outline" href="{{ '/pois.html' | relative_url }}">Δείτε όλα τα σημεία σε λίστα →</a>
   </div>

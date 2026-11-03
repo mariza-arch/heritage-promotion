@@ -14,7 +14,7 @@ title: "Σημεία ενδιαφέροντος"
       <div class="card-body">
         <h2 class="card-title">{{ poi.title | escape }}</h2>
         <p class="card-description">{{ poi.card_description | default: poi.excerpt | strip_html | normalize_whitespace | escape }}</p>
-        <dl class="card-facts">
+        <dl class="facts-list card-facts">
           <div><dt>Τοποθεσία</dt><dd data-field="location">{{ poi.card_location | escape }}</dd></div>
           <div><dt>Τύπος</dt><dd data-field="type">{{ poi.card_type | escape }}</dd></div>
           <div data-architect hidden><dt>Αρχιτέκτονας</dt><dd data-field="architect"></dd></div>

@@ -10,8 +10,7 @@ load_leaflet: 1
 
 <img id="wikidata_img" class="poi-image" alt="{{ page.title | escape }}" />
 
-<div id="map" class="poi-map" style="height: 180px; width:100%; background-color:lightgrey"></div>
-<p class="poi-actions"><a id="poi-directions" class="button button-primary" target="_blank" rel="noopener" hidden>Οδηγίες πρόσβασης ↗</a></p>
+{% include poi-summary.html %}
 
 {{ content }}
 
@@ -23,12 +22,26 @@ load_leaflet: 1
 </section>
 {% endif %}
 
+<section class="poi-location" aria-labelledby="poi-location-title">
+  <h2 id="poi-location-title">Τοποθεσία και πρόσβαση</h2>
+  <div class="surface-panel map-panel">
+    <div id="map" class="poi-map" aria-label="Χάρτης: {{ page.title | escape }}"></div>
+    <div class="map-panel-footer">
+      <p>{{ page.card_location | escape }}</p>
+      <div class="button-group">
+        <a id="poi-official-website" class="button button-outline" target="_blank" rel="noopener" hidden>Επίσημη ιστοσελίδα ↗</a>
+        <a id="poi-directions" class="button button-outline" target="_blank" rel="noopener" hidden>Οδηγίες πρόσβασης ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="poi-sources" class="poi-sources" aria-labelledby="poi-sources-title" hidden>
   <h2 id="poi-sources-title">Πηγές</h2>
   <a id="wikidata_href" target="_blank" rel="noopener" hidden>Δείτε στη Wikipedia ↗</a>
 </section>
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Wikidata_Stamp_Rec_Light.svg" style="float:right; width:100px" />
+<p class="poi-credit"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Wikidata_Stamp_Rec_Light.svg" width="100" alt="Powered by Wikidata" /></p>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>var wikidatum = '{{page.wikidatum}}'</script>

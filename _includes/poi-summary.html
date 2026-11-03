@@ -1,0 +1,21 @@
+{% if page.quick_facts and page.quick_facts.size > 0 %}
+<section class="surface-panel content-callout poi-summary" aria-labelledby="poi-summary-title">
+  <h2 id="poi-summary-title">Με μια ματιά</h2>
+  <dl class="facts-list facts-grid">
+    {% if page.card_location %}
+    <div>
+      <dt>Τοποθεσία</dt>
+      <dd>{{ page.card_location | escape }}</dd>
+    </div>
+    {% endif %}
+    {% for fact in page.quick_facts %}
+    {% if fact.label and fact.value %}
+    <div>
+      <dt>{{ fact.label | escape }}</dt>
+      <dd>{{ fact.value | escape }}</dd>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </dl>
+</section>
+{% endif %}
