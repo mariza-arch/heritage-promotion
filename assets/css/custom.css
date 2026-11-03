@@ -234,6 +234,20 @@ body {
 }
 
 @media (max-width: 600px) {
+  .site-header .site-nav .trigger {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: -1px;
+    z-index: 1100;
+    width: max-content;
+    max-width: calc(100vw - 30px);
+    box-sizing: border-box;
+    padding: 6px 0;
+    background: var(--color-navy);
+    border: 1px solid #d8dfe5;
+    border-radius: 5px;
+  }
+
   .site-header .site-nav .page-link {
     margin-left: 0;
     padding: 10px 16px;
