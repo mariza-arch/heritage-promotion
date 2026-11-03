@@ -8,94 +8,22 @@ title: "Σημεία ενδιαφέροντος"
 <div class="cards-grid">
   {% assign places = site.pois | sort: "title" %}
   {% for poi in places %}
-  <article class="card" data-wikidata="{{ poi.wikidatum | escape }}">
+  <article class="card place-card" data-wikidata="{{ poi.wikidatum | escape }}">
     <a class="card-link" href="{{ poi.url | relative_url }}">
-      <img class="card-image" alt="" loading="lazy" hidden>
+      <div class="card-media"><img class="card-image" alt="" loading="lazy" hidden></div>
       <div class="card-body">
         <h2 class="card-title">{{ poi.title | escape }}</h2>
-        <p class="card-description">{{ poi.content | strip_html | normalize_whitespace | truncatewords: 25 | escape }}</p>
+        <p class="card-description">{{ poi.card_description | default: poi.excerpt | strip_html | normalize_whitespace | escape }}</p>
+        <dl class="card-facts">
+          <div><dt>Τοποθεσία</dt><dd data-field="location">{{ poi.card_location | escape }}</dd></div>
+          <div><dt>Τύπος</dt><dd data-field="type">{{ poi.card_type | escape }}</dd></div>
+          <div data-architect hidden><dt>Αρχιτέκτονας</dt><dd data-field="architect"></dd></div>
+        </dl>
       </div>
     </a>
+    <p class="card-source"><a href="https://www.wikidata.org/wiki/{{ poi.wikidatum | escape }}" target="_blank" rel="noopener" aria-label="Wikidata: {{ poi.title | escape }} (νέα καρτέλα)">Wikidata ↗</a></p>
   </article>
   {% endfor %}
 </div>
 
-<script>
-  (async function () {
-    const cards = Array.from(
-      document.querySelectorAll(".card[data-wikidata]")
-    );
-
-    const ids = [...new Set(
-      cards.map(card => card.dataset.wikidata.trim())
-        .filter(id => /^Q\d+$/.test(id))
-    )];
-
-    for (let start = 0; start < ids.length; start += 10) {
-      const batch = ids.slice(start, start + 10);
-
-      const params = new URLSearchParams({
-        action: "wbgetentities",
-        ids: batch.join("|"),
-        props: "descriptions|claims",
-        languages: "el|en",
-        format: "json",
-        origin: "*"
-      });
-
-      try {
-        const response = await fetch(
-          "https://www.wikidata.org/w/api.php?" + params,
-          { signal: AbortSignal.timeout(15000) }
-        );
-
-        if (!response.ok) {
-          throw new Error("HTTP " + response.status);
-        }
-
-        const data = await response.json();
-
-        if (data.error) {
-          throw new Error(data.error.info);
-        }
-
-        cards.forEach(card => {
-          const id = card.dataset.wikidata.trim();
-          if (!batch.includes(id)) return;
-
-          const entity = data.entities?.[id];
-          if (!entity) return;
-
-          const description =
-            entity.descriptions?.el?.value ||
-            entity.descriptions?.en?.value;
-
-          if (description) {
-            card.querySelector(".card-description").textContent =
-              description.charAt(0).toUpperCase() + description.slice(1);
-          }
-
-          const filename =
-            entity.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
-
-          if (filename) {
-            const image = card.querySelector(".card-image");
-
-            image.onerror = () => {
-              image.hidden = true;
-            };
-            
-            image.hidden = false;
-            image.src =
-              "https://commons.wikimedia.org/wiki/Special:FilePath/" +
-              encodeURIComponent(filename) +
-              "?width=800";
-          }
-        });
-      } catch (error) {
-        console.error("Could not load Wikidata cards:", error);
-      }
-    }
-
-  })();
-</script>
+<script src="{{ "/assets/js/poi-cards.js" | relative_url }}" defer></script>

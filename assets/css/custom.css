@@ -207,6 +207,59 @@ body {
   line-height: 1.6;
 }
 
+.place-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.place-card .card-link {
+  height: auto;
+  flex: 1;
+}
+
+.card-media {
+  height: 225px;
+  background: #e4e9ee;
+}
+
+.card-facts {
+  margin: 20px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #d8dfe5;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.card-facts > div + div {
+  margin-top: 10px;
+}
+
+.card-facts dt {
+  color: var(--color-navy);
+  font-weight: 600;
+}
+
+.card-facts dd {
+  margin: 2px 0 0;
+  color: #475569;
+}
+
+.card-source {
+  margin: 0;
+  padding: 0 18px 18px;
+  font-size: 0.8rem;
+}
+
+.card-source a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.card-source a:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 3px;
+}
+
 .card-link:focus-visible {
   outline: 3px solid var(--color-red);
   outline-offset: -3px;
