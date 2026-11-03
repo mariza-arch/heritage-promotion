@@ -64,7 +64,7 @@
   }
 
   const relatedIds = [...new Set(Object.values(entities).flatMap(entity =>
-    ['P276', 'P131', 'P31', 'P84'].flatMap(property => itemIds(entity, property, true))
+    ['P276', 'P131', 'P31'].flatMap(property => itemIds(entity, property, true))
   ))];
   if (!relatedIds.length) return;
 
@@ -104,12 +104,7 @@
       : localLocation || firstLabel(itemIds(entity, 'P131', true));
     const types = [...new Set(itemIds(entity, 'P31').map(id => typeLabels[id] || label(id))
       .filter(Boolean))].slice(0, 2);
-    const architect = firstLabel(itemIds(entity, 'P84'));
     setFact(card, 'location', location);
     setFact(card, 'type', types.join(' · '));
-    if (architect) {
-      setFact(card, 'architect', architect);
-      card.querySelector('[data-architect]').hidden = false;
-    }
   }
 })();

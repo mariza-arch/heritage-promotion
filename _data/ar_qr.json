@@ -1,0 +1,38 @@
+{
+  "/ar/tomato-museum/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/tomato-museum/",
+    "image": "/assets/ar/tomato-museum/qr.svg"
+  },
+  "/ar/allatini-mills/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/allatini-mills/",
+    "image": "/assets/ar/allatini-mills/qr.svg"
+  },
+  "/ar/dimitsana/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/dimitsana/",
+    "image": "/assets/ar/dimitsana/qr.svg"
+  },
+  "/ar/drapetsona/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/drapetsona/",
+    "image": "/assets/ar/drapetsona/qr.svg"
+  },
+  "/ar/edessa-water/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/edessa-water/",
+    "image": "/assets/ar/edessa-water/qr.svg"
+  },
+  "/ar/ermoupoli-museum/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/ermoupoli-museum/",
+    "image": "/assets/ar/ermoupoli-museum/qr.svg"
+  },
+  "/ar/lavrio-minerals/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/lavrio-minerals/",
+    "image": "/assets/ar/lavrio-minerals/qr.svg"
+  },
+  "/ar/lavrio-park/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/lavrio-park/",
+    "image": "/assets/ar/lavrio-park/qr.svg"
+  },
+  "/ar/technopolis/": {
+    "url": "https://mariza-arch.github.io/heritage-promotion/ar/technopolis/",
+    "image": "/assets/ar/technopolis/qr.svg"
+  }
+}

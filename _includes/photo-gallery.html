@@ -1,0 +1,28 @@
+{% if include.photos and include.photos.size > 0 %}
+<details class="photo-gallery-section" id="poi-gallery">
+  <summary>Φωτογραφίες του τόπου ({{ include.photos.size }})</summary>
+  <p>Φωτογραφίες από το Wikimedia Commons, με περιγραφές, δημιουργούς και άδειες χρήσης. Μείωση μεγέθους, χωρίς περικοπή.</p>
+  <div class="cards-grid photo-gallery">
+    {% for photo in include.photos %}
+    {% if photo.url %}{% assign photo_url = photo.url %}{% else %}{% assign photo_url = include.asset_path | append: photo.file | relative_url %}{% endif %}
+    <figure class="surface-panel">
+      <img src="{{ photo_url | escape }}" alt="{{ photo.caption | escape }}" loading="lazy" crossorigin="anonymous">
+      <figcaption>
+        <a href="{{ photo.source | escape }}" target="_blank" rel="noopener">{{ photo.caption | escape }} ↗</a>
+        <p class="photo-credit">{% include photo-credit.html photo=photo %}</p>
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</details>
+<script>
+  (() => {
+    const gallery = document.getElementById('poi-gallery');
+    const revealGallery = () => {
+      if (window.location.hash === '#poi-gallery') gallery.open = true;
+    };
+    revealGallery();
+    window.addEventListener('hashchange', revealGallery);
+  })();
+</script>
+{% endif %}

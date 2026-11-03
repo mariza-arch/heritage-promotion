@@ -14,7 +14,7 @@ function fail() {
   scene.systems?.['mindar-image-system']?.ui?.hideScanning();
   document.body.classList.remove('active');
   document.getElementById('viewer').hidden = true;
-  status.textContent = 'Δεν ήταν δυνατή η εκκίνηση AR. Ελέγξτε την άδεια κάμερας στις ρυθμίσεις του προγράμματος περιήγησης και πατήστε «Επαναφόρτωση και νέα δοκιμή». Μπορείτε επίσης να δείτε τις φωτογραφίες χωρίς κάμερα.';
+  status.textContent = 'Δεν ήταν δυνατή η εκκίνηση AR. Ελέγξτε την άδεια κάμερας στις ρυθμίσεις του προγράμματος περιήγησης και πατήστε «Επαναφόρτωση και νέα δοκιμή». Μπορείτε επίσης να δείτε τις φωτογραφίες στη σελίδα του σημείου ενδιαφέροντος.';
   start.disabled = true;
   retry.hidden = false;
   status.focus();

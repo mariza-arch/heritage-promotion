@@ -1,5 +1,6 @@
 {% assign poi = site.pois | where: 'url', page.poi_url | first %}
 {% assign poi_title = poi.title | default: page.poi_title %}
+{% assign ar_qr = site.data.ar_qr[page.url] %}
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -29,6 +30,17 @@
             <li><strong>Επιτρέψτε την κάμερα.</strong> Πατήστε «Έναρξη AR» στη συσκευή με την οποία θα σαρώσετε την εικόνα.</li>
             <li><strong>Σαρώστε τη φωτογραφία.</strong> Κρατήστε ολόκληρη την εικόνα στο πλάνο, με καλό φωτισμό και χωρίς αντανακλάσεις.</li>
           </ol>
+          {% if ar_qr %}
+          <div class="ar-phone">
+            <div class="ar-phone-copy">
+              <h3>Ανοίξτε την εμπειρία στο κινητό σας</h3>
+              <p>Σαρώστε το QR με το κινητό σας και κρατήστε την εικόνα αναγνώρισης ανοιχτή σε αυτή την οθόνη.</p>
+            </div>
+            <a class="ar-qr-link" href="{{ ar_qr.url | escape }}" target="_blank" rel="noopener" aria-label="Ανοίξτε τη δημόσια σελίδα AR: {{ poi_title | escape }}">
+              <img class="ar-qr-image" src="{{ ar_qr.image | relative_url }}" width="196" height="196" alt="QR για την εμπειρία AR: {{ poi_title | escape }}">
+            </a>
+          </div>
+          {% endif %}
         </section>
 
         <figure class="surface-panel ar-target">
@@ -49,29 +61,16 @@
           <div class="button-group">
             <button id="start" class="button button-primary" type="button">Έναρξη AR</button>
             <button id="retry" class="button button-outline" type="button" hidden>Επαναφόρτωση και νέα δοκιμή</button>
+            <a class="button button-outline" href="{{ page.poi_url | relative_url }}#poi-gallery">Φωτογραφίες του τόπου →</a>
           </div>
         </section>
 
         <p id="status" role="status" aria-live="polite" tabindex="-1"></p>
 
-        <details class="ar-gallery-section">
-          <summary>Δείτε τις φωτογραφίες χωρίς κάμερα</summary>
-          <p>Περιηγηθείτε στις ίδιες {{ page.photos.size }} φωτογραφίες, χωρίς να ξεκινήσετε την εμπειρία AR.</p>
-          <div class="cards-grid ar-gallery">
-            {% for photo in page.photos %}
-            {% if photo.url %}{% assign photo_url = photo.url %}{% else %}{% assign photo_url = page.asset_path | append: photo.file | relative_url %}{% endif %}
-            <figure class="surface-panel">
-              <img src="{{ photo_url | escape }}" alt="{{ photo.caption | escape }}" loading="lazy" crossorigin="anonymous">
-              <figcaption><a href="{{ photo.source | escape }}" target="_blank" rel="noopener">{{ photo.caption | escape }} ↗</a><p class="ar-photo-credit">{% include ar-photo-credit.html photo=photo %}</p></figcaption>
-            </figure>
-            {% endfor %}
-          </div>
-        </details>
-
         <section class="poi-sources" aria-labelledby="ar-sources-title">
           <h2 id="ar-sources-title">Φωτογραφίες και πηγές</h2>
-          <p>Φωτογραφίες από το Wikimedia Commons. Οι δημιουργοί, οι άδειες χρήσης και οι πηγές αναφέρονται σε κάθε φωτογραφία. Μείωση μεγέθους, χωρίς περικοπή.</p>
-          <p><a href="{{ page.target.source | escape }}" target="_blank" rel="noopener">Πηγή εικόνας αναγνώρισης ↗</a> · {% include ar-photo-credit.html photo=page.target %}</p>
+          <p>Φωτογραφίες από το Wikimedia Commons. Οι δημιουργοί, οι άδειες χρήσης και οι πηγές αναφέρονται στη συλλογή φωτογραφιών του τόπου και μέσα στην εμπειρία AR. Μείωση μεγέθους, χωρίς περικοπή.</p>
+          <p><a href="{{ page.target.source | escape }}" target="_blank" rel="noopener">Πηγή εικόνας αναγνώρισης ↗</a> · {% include photo-credit.html photo=page.target %}</p>
           {% if page.wikipedia_url and page.wikipedia_url != '' %}<p><a href="{{ page.wikipedia_url | escape }}" target="_blank" rel="noopener">Άρθρο Wikipedia ↗</a></p>{% endif %}
         </section>
       </section>
@@ -105,10 +104,10 @@
     <button id="close" class="button" type="button">Κλείσιμο</button>
     <details id="credits">
       <summary>Φωτογραφίες και πηγές</summary>
-      <p>Μείωση μεγέθους, χωρίς περικοπή. <a href="{{ page.target.source | escape }}" target="_blank" rel="noopener">Εικόνα αναγνώρισης ↗</a> · {% include ar-photo-credit.html photo=page.target %}</p>
+      <p>Μείωση μεγέθους, χωρίς περικοπή. <a href="{{ page.target.source | escape }}" target="_blank" rel="noopener">Εικόνα αναγνώρισης ↗</a> · {% include photo-credit.html photo=page.target %}</p>
       <ol>
         {% for photo in page.photos %}
-        <li><a href="{{ photo.source | escape }}" target="_blank" rel="noopener">{{ photo.caption | escape }}</a> · {% include ar-photo-credit.html photo=photo %}</li>
+        <li><a href="{{ photo.source | escape }}" target="_blank" rel="noopener">{{ photo.caption | escape }}</a> · {% include photo-credit.html photo=photo %}</li>
         {% endfor %}
       </ol>
     </details>

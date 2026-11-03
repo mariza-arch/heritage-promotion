@@ -495,3 +495,50 @@ a:hover,
   outline: 2px solid #fff;
   outline-offset: 4px;
 }
+
+.photo-gallery-section {
+  margin: 32px 0;
+}
+
+.photo-gallery-section summary {
+  color: var(--color-navy);
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.photo-gallery-section summary:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 4px;
+}
+
+.photo-gallery {
+  padding: 0;
+}
+
+.photo-gallery figure {
+  margin: 0;
+  overflow: hidden;
+}
+
+.photo-gallery img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.photo-gallery figcaption {
+  padding: 16px;
+}
+
+.photo-credit {
+  margin: 10px 0 0;
+  color: #475569;
+  font-size: 0.8rem;
+}
+
+.photo-gallery a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
