@@ -137,6 +137,8 @@ body {
   margin-bottom: 20px;
 }
 
+.poi-back a,
+.poi-back a:visited,
 .poi-sources a,
 .poi-sources a:visited {
   color: var(--color-navy);
@@ -144,6 +146,7 @@ body {
   text-underline-offset: 3px;
 }
 
+.poi-back a:focus-visible,
 .poi-sources a:focus-visible {
   outline: 3px solid var(--color-red);
   outline-offset: 3px;
@@ -407,6 +410,7 @@ a:visited {
 }
 
 a:hover,
+.poi-back a:hover,
 .poi-sources a:hover {
   color: var(--color-red);
 }

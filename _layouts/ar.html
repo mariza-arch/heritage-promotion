@@ -1,0 +1,119 @@
+{% assign poi = site.pois | where: 'url', page.poi_url | first %}
+{% assign poi_title = poi.title | default: page.poi_title %}
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/ar.css' | relative_url }}">
+</head>
+<body class="ar-page">
+  {% include header.html %}
+  <main class="page-content" aria-label="Περιεχόμενο">
+    <div class="wrapper">
+      <section id="intro" aria-labelledby="ar-title">
+        <p class="poi-back"><a href="{{ page.poi_url | relative_url }}">← Πίσω στο σημείο ενδιαφέροντος</a></p>
+        <h1 id="ar-title">{{ page.experience_title | default: 'Εξερευνήστε τον τόπο με AR' | escape }}</h1>
+        <p class="home-lead">{{ poi_title | escape }}</p>
+        <p>Ανακαλύψτε φωτογραφίες του τόπου με επαυξημένη πραγματικότητα. Στρέψτε την κάμερα στην εικόνα αναγνώρισης και δείτε τις φωτογραφίες να εμφανίζονται επάνω της.</p>
+
+        <section class="surface-panel content-callout" aria-labelledby="ar-steps-title">
+          <h2 id="ar-steps-title">Πριν ξεκινήσετε</h2>
+          <ol class="ar-steps">
+            <li><strong>Ετοιμάστε την εικόνα.</strong> Ανοίξτε την παρακάτω φωτογραφία σε δεύτερη οθόνη ή εκτυπώστε την.</li>
+            <li><strong>Επιτρέψτε την κάμερα.</strong> Πατήστε «Έναρξη AR» στη συσκευή με την οποία θα σαρώσετε την εικόνα.</li>
+            <li><strong>Σαρώστε τη φωτογραφία.</strong> Κρατήστε ολόκληρη την εικόνα στο πλάνο, με καλό φωτισμό και χωρίς αντανακλάσεις.</li>
+          </ol>
+        </section>
+
+        <figure class="surface-panel ar-target">
+          <img id="target-image" src="{{ page.asset_path | append: page.target.file | relative_url }}" alt="{{ page.target.caption | escape }} — εικόνα αναγνώρισης AR" width="{{ page.target.pixel_width }}" height="{{ page.target.pixel_height }}">
+          <figcaption class="ar-target-caption">
+            <h2>Η εικόνα αναγνώρισης</h2>
+            <p>Αυτή είναι η φωτογραφία που θα αναζητήσει η κάμερα. Χρησιμοποιήστε δεύτερη οθόνη ή ένα εκτυπωμένο αντίγραφο.</p>
+            <div class="button-group">
+              <a class="button button-outline" href="{{ page.asset_path | append: page.target.file | relative_url }}" target="_blank" rel="noopener">Άνοιγμα εικόνας ↗</a>
+              <a class="button button-outline" href="{{ page.asset_path | append: page.target.file | relative_url }}" download="{{ page.target.file | escape }}">Λήψη εικόνας ↓</a>
+            </div>
+          </figcaption>
+        </figure>
+
+        <section class="surface-panel surface-panel-accent content-callout" aria-labelledby="ar-start-title">
+          <h2 id="ar-start-title">Έτοιμοι για την εμπειρία;</h2>
+          <p>Χρειάζεστε συσκευή με κάμερα και την εικόνα αναγνώρισης απέναντί της. Μπορείτε να κλείσετε την εμπειρία οποιαδήποτε στιγμή.</p>
+          <div class="button-group">
+            <button id="start" class="button button-primary" type="button">Έναρξη AR</button>
+            <button id="retry" class="button button-outline" type="button" hidden>Επαναφόρτωση και νέα δοκιμή</button>
+          </div>
+        </section>
+
+        <p id="status" role="status" aria-live="polite" tabindex="-1"></p>
+
+        <details class="ar-gallery-section">
+          <summary>Δείτε τις φωτογραφίες χωρίς κάμερα</summary>
+          <p>Περιηγηθείτε στις ίδιες {{ page.photos.size }} φωτογραφίες, χωρίς να ξεκινήσετε την εμπειρία AR.</p>
+          <div class="cards-grid ar-gallery">
+            {% for photo in page.photos %}
+            {% if photo.url %}{% assign photo_url = photo.url %}{% else %}{% assign photo_url = page.asset_path | append: photo.file | relative_url %}{% endif %}
+            <figure class="surface-panel">
+              <img src="{{ photo_url | escape }}" alt="{{ photo.caption | escape }}" loading="lazy" crossorigin="anonymous">
+              <figcaption><a href="{{ photo.source | escape }}" target="_blank" rel="noopener">{{ photo.caption | escape }} ↗</a><p class="ar-photo-credit">{% include ar-photo-credit.html photo=photo %}</p></figcaption>
+            </figure>
+            {% endfor %}
+          </div>
+        </details>
+
+        <section class="poi-sources" aria-labelledby="ar-sources-title">
+          <h2 id="ar-sources-title">Φωτογραφίες και πηγές</h2>
+          <p>Φωτογραφίες από το Wikimedia Commons. Οι δημιουργοί, οι άδειες χρήσης και οι πηγές αναφέρονται σε κάθε φωτογραφία. Μείωση μεγέθους, χωρίς περικοπή.</p>
+          <p><a href="{{ page.target.source | escape }}" target="_blank" rel="noopener">Πηγή εικόνας αναγνώρισης ↗</a> · {% include ar-photo-credit.html photo=page.target %}</p>
+          {% if page.wikipedia_url and page.wikipedia_url != '' %}<p><a href="{{ page.wikipedia_url | escape }}" target="_blank" rel="noopener">Άρθρο Wikipedia ↗</a></p>{% endif %}
+        </section>
+      </section>
+    </div>
+  </main>
+  {% include footer.html %}
+  <div id="viewer" hidden>
+    <a-scene embedded mindar-image="imageTargetSrc: {{ page.asset_path | append: 'targets.mind' | relative_url }}; autoStart: false; uiLoading: no; uiError: no" renderer="colorManagement: true; alpha: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets id="photos">
+        {% for photo in page.photos %}
+        {% if photo.url %}{% assign photo_url = photo.url %}{% else %}{% assign photo_url = page.asset_path | append: photo.file | relative_url %}{% endif %}
+        <img id="photo-{{ forloop.index0 }}" src="{{ photo_url | escape }}" alt="{{ photo.caption | escape }}" crossorigin="anonymous">
+        {% endfor %}
+      </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
+      {% assign columns = page.photos.size | at_most: 3 %}
+      {% assign rows = page.photos.size | plus: columns | minus: 1 | divided_by: columns %}
+      {% assign x_offset = columns | minus: 1 | times: 0.16 %}
+      {% assign y_offset = rows | minus: 1 | times: 0.12 %}
+      <a-entity id="anchor" mindar-image-target="targetIndex: 0">
+        <a-plane color="#ffffff" width="{{ columns | times: 0.32 | plus: 0.04 }}" height="{{ rows | times: 0.24 | plus: 0.02 }}" position="0 0 0.01"></a-plane>
+        {% for photo in page.photos %}
+        {% assign column = forloop.index0 | modulo: columns %}
+        {% assign row = forloop.index0 | divided_by: columns %}
+        <a-image src="#photo-{{ forloop.index0 }}"
+          width="{{ photo.width }}" height="{{ photo.height }}"
+          position="{{ column | times: 0.32 | minus: x_offset }} {{ row | times: -0.24 | plus: y_offset }} 0.02"></a-image>
+        {% endfor %}
+      </a-entity>
+    </a-scene>
+    <button id="close" class="button" type="button">Κλείσιμο</button>
+    <details id="credits">
+      <summary>Φωτογραφίες και πηγές</summary>
+      <p>Μείωση μεγέθους, χωρίς περικοπή. <a href="{{ page.target.source | escape }}" target="_blank" rel="noopener">Εικόνα αναγνώρισης ↗</a> · {% include ar-photo-credit.html photo=page.target %}</p>
+      <ol>
+        {% for photo in page.photos %}
+        <li><a href="{{ photo.source | escape }}" target="_blank" rel="noopener">{{ photo.caption | escape }}</a> · {% include ar-photo-credit.html photo=photo %}</li>
+        {% endfor %}
+      </ol>
+    </details>
+  </div>
+  <noscript>Για την εμπειρία AR απαιτείται JavaScript.</noscript>
+  <script src="{{ '/assets/js/ar.js' | relative_url }}" defer></script>
+</body>
+</html>
