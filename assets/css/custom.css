@@ -1,5 +1,11 @@
+:root {
+  --color-navy: #15325a;
+  --color-red: #be091c;
+  --color-surface: #f3f5f6;
+}
+
 body {
-  background-color: #f3f5f6;
+  background-color: var(--color-surface);
 }
 
 .poi-ar {
@@ -15,7 +21,7 @@ body {
   display: inline-block;
   padding: 12px 18px;
   border: 0;
-  background: #15325a;
+  background: var(--color-navy);
   color: #fff;
   border-radius: 5px;
   font: inherit;
@@ -34,8 +40,45 @@ body {
 }
 
 .button:focus-visible {
-  outline: 3px solid #2563eb;
+  outline: 3px solid var(--color-red);
   outline-offset: 3px;
+}
+
+.home-explore {
+  margin: 24px 0 32px;
+}
+
+.poi-back {
+  margin-bottom: 20px;
+}
+
+.poi-back a,
+.poi-back a:visited,
+.poi-sources a,
+.poi-sources a:visited {
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.poi-back a:focus-visible,
+.poi-sources a:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 3px;
+}
+
+.poi-actions {
+  margin-bottom: 32px;
+}
+
+.poi-actions:has([hidden]) {
+  display: none;
+}
+
+.poi-sources {
+  margin: 32px 0;
+  padding-top: 20px;
+  border-top: 1px solid #d8dfe5;
 }
 
 .page-content h2 {
@@ -56,7 +99,7 @@ body {
 }
 
 .poi-map {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 #all-pois-map {
@@ -82,7 +125,7 @@ body {
 }
 
 .site-header {
-  background-color: #15325a;
+  background-color: var(--color-navy);
   color: #fff;
 }
 
@@ -96,11 +139,11 @@ body {
 }
 
 .site-header .site-nav {
-  background-color: #15325a;
+  background-color: var(--color-navy);
 }
 
 .site-footer {
-  background-color: #15325a;
+  background-color: var(--color-navy);
   color: #fff;
 }
 
@@ -152,7 +195,7 @@ body {
 
 .card-title {
   margin: 0 0 12px;
-  color: #0f172a;
+  color: var(--color-navy);
   font-size: 1.35rem;
   line-height: 1.4;
 }
@@ -165,7 +208,7 @@ body {
 }
 
 .card-link:focus-visible {
-  outline: 3px solid #2563eb;
+  outline: 3px solid var(--color-red);
   outline-offset: -3px;
 }
 
@@ -205,6 +248,102 @@ body {
 }
 
 .team-links a:focus-visible {
-  outline: 3px solid #2563eb;
+  outline: 3px solid var(--color-red);
   outline-offset: 3px;
+}
+
+a,
+a:visited {
+  color: var(--color-navy);
+}
+
+a:hover,
+.poi-back a:hover,
+.poi-sources a:hover {
+  color: var(--color-red);
+}
+
+.page-content h1,
+.page-content h2,
+.page-content h3,
+#intro h1 {
+  color: var(--color-navy);
+}
+
+.page-content h1::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: 16px 0 0;
+  background: var(--color-red);
+}
+
+.page-content .places-heading::after {
+  margin-inline: auto;
+}
+
+.site-header {
+  border-top-color: var(--color-red);
+}
+
+.site-header .site-nav .page-link:hover,
+.site-header .site-nav .page-link:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+.card {
+  border-top: 3px solid var(--color-red);
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
+
+.card-link:hover .card-title,
+.card-link:focus-visible .card-title {
+  color: var(--color-red);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.team-role {
+  color: var(--color-red);
+}
+
+.poi-ar {
+  border-left: 3px solid var(--color-red);
+}
+
+.site-footer {
+  border-top: 3px solid var(--color-red);
+}
+
+.site-footer .footer-col-wrapper {
+  color: #e0e7ef;
+}
+
+.site-footer a,
+.site-footer a:visited {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer a:hover {
+  color: #fff;
+  text-decoration-thickness: 2px;
+}
+
+.site-footer .svg-icon {
+  fill: #e0e7ef;
+}
+
+.site-header a:focus-visible,
+.site-footer a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
 }

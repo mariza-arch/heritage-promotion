@@ -10,6 +10,8 @@ load_markercluster: true
 
 ### Εξερευνήστε τους τόπους, ανακαλύψτε τις ιστορίες τους και γνωρίστε μια διαφορετική πλευρά της Ελλάδας.
 
+<p class="home-explore"><a class="button button-primary" href="{{ '/pois.html' | relative_url }}">Εξερευνήστε τα σημεία →</a></p>
+
 ## Τα σημεία ενδιαφέροντος στον χάρτη
 
 {% include all-pois-map.html %}

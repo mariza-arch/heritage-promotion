@@ -21,11 +21,15 @@ function get_wikidatum(id){
             $('#wikidata_href')
               .attr('href', `https://${wikiLanguage}.wikipedia.org/wiki/${encodeURIComponent(wikiTitle)}`)
               .prop('hidden', false);
+            $('#poi-sources').prop('hidden', false);
           }
 
 
           let latlong = get_json_value(['entities',id,'claims','P625', 0,'mainsnak', 'datavalue', 'value'], data);
           if (latlong) {
+              $('#poi-directions')
+                .attr('href', `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${latlong.latitude},${latlong.longitude}`)}`)
+                .prop('hidden', false);
               //$('#wikidata_location').text(JSON.stringify(value) );
               console.log('Create map');
               var map = L.map('map', {fullscreenControl: { pseudoFullscreen: true } }).setView([latlong.latitude, latlong.longitude], 13);

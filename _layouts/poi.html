@@ -3,14 +3,15 @@ layout: default
 load_leaflet: 1
 ---
 
+<p class="poi-back"><a href="{{ '/pois.html' | relative_url }}">← Όλα τα σημεία ενδιαφέροντος</a></p>
 <h1 class="poi-title">{{ page.title | escape }}</h1>
 <h3 id="wikidata_descr"></h3>
-<a id="wikidata_href" class="button" target="_blank" rel="noopener" hidden>Δείτε στη Wikipedia ↗</a>
 <p id="wikidata_location"></p>
 
 <img id="wikidata_img" class="poi-image" alt="{{ page.title | escape }}" />
 
 <div id="map" class="poi-map" style="height: 180px; width:100%; background-color:lightgrey"></div>
+<p class="poi-actions"><a id="poi-directions" class="button button-primary" target="_blank" rel="noopener" hidden>Οδηγίες πρόσβασης ↗</a></p>
 
 {{ content }}
 
@@ -18,9 +19,14 @@ load_leaflet: 1
 <section class="poi-ar" aria-labelledby="poi-ar-title">
   <h2 id="poi-ar-title">Εξερευνήστε το μουσείο με επαυξημένη πραγματικότητα</h2>
   <p>Σαρώστε την εξωτερική φωτογραφία του μουσείου και ανακαλύψτε εικόνες από τη συλλογή του.</p>
-  <a class="button" href="{{ page.ar_url | relative_url }}">Έναρξη εμπειρίας AR →</a>
+  <a class="button button-primary" href="{{ page.ar_url | relative_url }}">Έναρξη εμπειρίας AR →</a>
 </section>
 {% endif %}
+
+<section id="poi-sources" class="poi-sources" aria-labelledby="poi-sources-title" hidden>
+  <h2 id="poi-sources-title">Πηγές</h2>
+  <a id="wikidata_href" target="_blank" rel="noopener" hidden>Δείτε στη Wikipedia ↗</a>
+</section>
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Wikidata_Stamp_Rec_Light.svg" style="float:right; width:100px" />
 
