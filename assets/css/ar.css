@@ -98,7 +98,7 @@ a-scene {
 }
 
 #close,
-#credits,
+#ar-photo-controls,
 body.active #status {
   position: fixed;
   z-index: 2;
@@ -115,12 +115,37 @@ body.active #status {
   background: white;
 }
 
-#credits {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  max-height: 35vh;
+#ar-photo-controls {
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 16px;
+  max-height: 40vh;
   overflow: auto;
+  box-sizing: border-box;
+}
+
+.ar-photo-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.ar-photo-navigation .button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+#photo-caption {
+  margin: 12px 0 0;
+  color: var(--color-navy);
+}
+
+#photo-caption-source,
+#credits {
+  display: block;
+  margin-top: 8px;
   font-size: 0.8rem;
 }
 
