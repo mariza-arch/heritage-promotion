@@ -117,6 +117,7 @@ a-scene {
 }
 
 #close,
+#show-photo-controls,
 #ar-photo-controls,
 body.active #status {
   position: fixed;
@@ -125,6 +126,11 @@ body.active #status {
 
 #close {
   top: 12px;
+  right: 12px;
+}
+
+#show-photo-controls {
+  bottom: 12px;
   right: 12px;
 }
 

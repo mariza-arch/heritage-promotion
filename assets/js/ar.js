@@ -13,12 +13,26 @@ const photoCanvas = document.getElementById('photo-canvas');
 const photoContext = photoCanvas.getContext('2d', {alpha: false});
 const photoDisplay = document.getElementById('photo-display');
 const resetZoom = document.getElementById('reset-photo-zoom');
+const photoControls = document.getElementById('ar-photo-controls');
+const showControls = document.getElementById('show-photo-controls');
+const hideControls = document.getElementById('hide-photo-controls');
 const pinchPointers = new Map();
 let photoZoom = 1;
 let pinchDistance = 0;
 let pinchStartZoom = 1;
 let selectedIndex = 0;
 let photoRequest = 0;
+
+function setControlsVisible(visible) {
+  photoControls.hidden = !visible;
+  showControls.hidden = visible;
+  showControls.setAttribute('aria-expanded', String(visible));
+  hideControls.setAttribute('aria-expanded', String(visible));
+  (visible ? hideControls : showControls).focus();
+}
+
+hideControls.addEventListener('click', () => setControlsVisible(false));
+showControls.addEventListener('click', () => setControlsVisible(true));
 
 function setPhotoZoom(value) {
   photoZoom = Math.max(0.5, Math.min(3, value));

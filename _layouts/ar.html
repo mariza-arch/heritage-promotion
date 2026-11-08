@@ -96,6 +96,7 @@
       </a-entity>
     </a-scene>
     <button id="close" class="button" type="button">Κλείσιμο</button>
+    <button id="show-photo-controls" class="button" type="button" aria-controls="ar-photo-controls" aria-expanded="false" hidden>Εμφάνιση μενού</button>
     <section id="ar-photo-controls" class="surface-panel" aria-label="Περιήγηση φωτογραφιών">
       <div class="ar-photo-navigation">
         <button id="previous-photo" class="button button-outline" type="button" aria-label="Προηγούμενη φωτογραφία">←</button>
@@ -104,6 +105,7 @@
       </div>
       <div class="button-group ar-zoom-controls">
         <button id="reset-photo-zoom" class="button button-outline" type="button" disabled>Επαναφορά zoom (1×)</button>
+        <button id="hide-photo-controls" class="button button-outline" type="button" aria-controls="ar-photo-controls" aria-expanded="true">Απόκρυψη μενού</button>
       </div>
       <p class="ar-zoom-hint">Ανοίξτε δύο δάχτυλα για μεγέθυνση ή φέρτε τα κοντά για σμίκρυνση.</p>
       <p id="photo-load-status" role="status" aria-live="polite"></p>
