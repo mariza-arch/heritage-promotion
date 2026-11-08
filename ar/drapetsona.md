@@ -18,7 +18,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Lipasmata%2C_Drapetsona-2_%28March_2022%29.jpg/960px-Lipasmata%2C_Drapetsona-2_%28March_2022%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.28
     height: 0.1362
-    caption: "Ο χώρος των Λιπασμάτων στη Δραπετσώνα"
+    caption: "Το κτίριο του παλαιού εργοστασίου λιπασμάτων."
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11782217"
     source: "https://commons.wikimedia.org/wiki/File:Lipasmata,_Drapetsona-2_(March_2022).jpg"
     author: "Texniths"
     license: "CC BY-SA 4.0"
@@ -26,7 +27,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/%CE%9B%CE%99%CE%A0%CE%91%CE%A3%CE%9C%CE%91%CE%A4%CE%91_%CE%A0%CE%95%CE%99%CE%A1%CE%91%CE%99%CE%91%CE%A3.jpg/960px-%CE%9B%CE%99%CE%A0%CE%91%CE%A3%CE%9C%CE%91%CE%A4%CE%91_%CE%A0%CE%95%CE%99%CE%A1%CE%91%CE%99%CE%91%CE%A3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.28
     height: 0.1861
-    caption: "Βιομηχανικά ίχνη στα Λιπάσματα"
+    caption: "Το παλιό εργοστάσιο λιπασμάτων της Δραπετσώνας."
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11782217"
     source: "https://commons.wikimedia.org/wiki/File:%CE%9B%CE%99%CE%A0%CE%91%CE%A3%CE%9C%CE%91%CE%A4%CE%91_%CE%A0%CE%95%CE%99%CE%A1%CE%91%CE%99%CE%91%CE%A3.jpg"
     author: "NIKOLAOS KATSAROS"
     license: "CC BY-SA 4.0"
@@ -34,7 +36,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Drapetsona_Port_at_Piraeus.jpg/960px-Drapetsona_Port_at_Piraeus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.28
     height: 0.1575
-    caption: "Το λιμάνι της Δραπετσώνας"
+    caption: "Προλιμένας Πειραιώς-Φάρος."
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11782217"
     source: "https://commons.wikimedia.org/wiki/File:Drapetsona_Port_at_Piraeus.jpg"
     author: "Dimorsitanos"
     license: "CC BY-SA 3.0"

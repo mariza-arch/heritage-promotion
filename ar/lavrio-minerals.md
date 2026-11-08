@@ -18,7 +18,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Annabergite-Grece-1.jpg/960px-Annabergite-Grece-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.2385
     height: 0.2
-    caption: "Δείγμα ορυκτού αναβεργίτη"
+    caption: "Ανναβεργίτης από τα μεταλλεία Λαυρίου"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11832062"
     source: "https://commons.wikimedia.org/wiki/File:Annabergite-Grece-1.jpg"
     author: "Didier Descouens"
     license: "CC BY-SA 3.0"
@@ -26,7 +27,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/MOUSIO_LAYRIOY_020.jpg/960px-MOUSIO_LAYRIOY_020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.28
     height: 0.1861
-    caption: "Έκθεμα από το Ορυκτολογικό Μουσείο Λαυρίου"
+    caption: "Εσωτερικό του Ορυκτολογικού μουσείου Λαυρίου"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11832062"
     source: "https://commons.wikimedia.org/wiki/File:MOUSIO_LAYRIOY_020.jpg"
     author: "Dr Petros Tzeferis"
     license: "CC BY-SA 4.0"
@@ -34,7 +36,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/MOUSIO_LAYRIOY_036.jpg/960px-MOUSIO_LAYRIOY_036.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.28
     height: 0.1861
-    caption: "Ορυκτά στη συλλογή του μουσείου"
+    caption: "Στις προθήκες του μουσείου εκτίθενται πάνω από 550 ορυκτά εκθέματα"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11832062"
     source: "https://commons.wikimedia.org/wiki/File:MOUSIO_LAYRIOY_036.jpg"
     author: "Dr Petros Tzeferis"
     license: "CC BY-SA 4.0"

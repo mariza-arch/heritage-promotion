@@ -18,7 +18,8 @@ photos:
   - url: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Gazi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
     width: 0.28
     height: 0.1779
-    caption: "Το βιομηχανικό τοπίο στο Γκάζι"
+    caption: "Το Γκάζι"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11491656"
     source: "https://commons.wikimedia.org/wiki/File:Gazi.jpg"
     author: "Dimorsitanos"
     license: "CC BY-SA 4.0"
@@ -26,7 +27,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/InnovAthens.jpg/960px-InnovAthens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.2
     height: 0.2
-    caption: "Ο χώρος InnovAthens"
+    caption: "InnovAthens"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11491656"
     source: "https://commons.wikimedia.org/wiki/File:InnovAthens.jpg"
     author: "Artemco"
     license: "CC BY-SA 4.0"
@@ -34,7 +36,8 @@ photos:
   - url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Texnopoli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
     width: 0.28
     height: 0.1794
-    caption: "Εγκαταστάσεις της Τεχνόπολης"
+    caption: "Η Τεχνόπολις των Αθηνών"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11491656"
     source: "https://commons.wikimedia.org/wiki/File:Texnopoli.jpg"
     author: "Dimorsitanos"
     license: "CC BY-SA 3.0"

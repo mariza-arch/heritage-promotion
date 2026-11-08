@@ -26,7 +26,8 @@ photos:
   - url: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Dimitsana01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
     width: 0.2667
     height: 0.2
-    caption: "Η Δημητσάνα και το τοπίο της"
+    caption: "Η Δημητσάνα Αρκαδίας."
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=10456222"
     source: "https://commons.wikimedia.org/wiki/File:Dimitsana01.jpg"
     author: "costas78"
     license: "Attribution"

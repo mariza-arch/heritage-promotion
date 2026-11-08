@@ -19,6 +19,7 @@ photos:
     width: 0.15
     height: 0.2
     caption: "Τυπογραφικό πιεστήριο Albion"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11535276"
     source: "https://commons.wikimedia.org/wiki/File:Albion_Printing_Press.jpg"
     author: "Silva.1994"
     license: "CC BY-SA 3.0"
@@ -26,7 +27,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/J._Humphreys_%26_Sons%2C_Hulme_Manchester_machinery.jpg/960px-J._Humphreys_%26_Sons%2C_Hulme_Manchester_machinery.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.2667
     height: 0.2
-    caption: "Βιομηχανικός μηχανολογικός εξοπλισμός"
+    caption: "Τυπογραφικά πιεστήρια J. Humphreys & Sons και Hulme Manchester"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11535276"
     source: "https://commons.wikimedia.org/wiki/File:J._Humphreys_%26_Sons,_Hulme_Manchester_machinery.jpg"
     author: "Silva.1994"
     license: "CC BY-SA 3.0"
@@ -34,7 +36,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Ermoupolis%2C_Syros_Enfield_8000_Electric_City_Car%2C_Industrial_Museum.jpg/960px-Ermoupolis%2C_Syros_Enfield_8000_Electric_City_Car%2C_Industrial_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.2667
     height: 0.2
-    caption: "Το ηλεκτρικό αυτοκίνητο Enfield 8000"
+    caption: "Το Enfield 8000"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11535276"
     source: "https://commons.wikimedia.org/wiki/File:Ermoupolis,_Syros_Enfield_8000_Electric_City_Car,_Industrial_Museum.jpg"
     author: "ElioQoshi"
     license: "CC BY 3.0"
@@ -42,7 +45,8 @@ photos:
   - url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Ship_Model_Industrial_Museum_of_Ermoupolis%2C_Syros%2C_File-Greece_2.jpg/960px-Ship_Model_Industrial_Museum_of_Ermoupolis%2C_Syros%2C_File-Greece_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     width: 0.2667
     height: 0.2
-    caption: "Ομοίωμα πλοίου στη συλλογή του μουσείου"
+    caption: "Μοντέλο πλοίου"
+    caption_source: "https://el.wikipedia.org/w/index.php?oldid=11535276"
     source: "https://commons.wikimedia.org/wiki/File:Ship_Model_Industrial_Museum_of_Ermoupolis,_Syros,_File-Greece_2.jpg"
     author: "ElioQoshi"
     license: "CC BY 3.0"

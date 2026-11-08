@@ -1,1 +1,2 @@
 {% if include.photo.author %}{{ include.photo.author | escape }} · {% endif %}{% if include.photo.license_url and include.photo.license_url != '' %}<a href="{{ include.photo.license_url | escape }}" target="_blank" rel="noopener">{{ include.photo.license | escape }}</a>{% else %}{{ include.photo.license | escape }}{% endif %}
+{% if include.photo.caption_source %} · <a href="{{ include.photo.caption_source | escape }}" target="_blank" rel="noopener">Λεζάντα: Wikipedia ↗</a>{% endif %}

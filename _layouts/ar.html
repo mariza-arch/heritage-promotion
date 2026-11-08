@@ -21,23 +21,24 @@
         <p class="poi-back"><a href="{{ page.poi_url | relative_url }}">← Πίσω στο σημείο ενδιαφέροντος</a></p>
         <h1 id="ar-title">{{ page.experience_title | default: 'Εξερευνήστε τον τόπο με AR' | escape }}</h1>
         <p class="home-lead">{{ poi_title | escape }}</p>
-        <p>Ανακαλύψτε φωτογραφίες του τόπου με επαυξημένη πραγματικότητα. Στρέψτε την κάμερα στην εικόνα αναγνώρισης και δείτε τις φωτογραφίες να εμφανίζονται επάνω της.</p>
+        <p>Ανακαλύψτε φωτογραφίες του τόπου με επαυξημένη πραγματικότητα. Στρέψτε την κάμερα στην εικόνα αναγνώρισης και περιηγηθείτε στις φωτογραφίες, μία κάθε φορά, με τα βέλη προηγούμενης και επόμενης.</p>
 
         <section class="surface-panel content-callout" aria-labelledby="ar-steps-title">
-          <h2 id="ar-steps-title">Πριν ξεκινήσετε</h2>
+          <h2 id="ar-steps-title">Πώς ξεκινά η εμπειρία AR</h2>
           <ol class="ar-steps">
-            <li><strong>Ετοιμάστε την εικόνα.</strong> Ανοίξτε την παρακάτω φωτογραφία σε δεύτερη οθόνη ή εκτυπώστε την.</li>
-            <li><strong>Επιτρέψτε την κάμερα.</strong> Πατήστε «Έναρξη AR» στη συσκευή με την οποία θα σαρώσετε την εικόνα.</li>
-            <li><strong>Σαρώστε τη φωτογραφία.</strong> Κρατήστε ολόκληρη την εικόνα στο πλάνο, με καλό φωτισμό και χωρίς αντανακλάσεις.</li>
+            <li><strong>Ετοιμάστε την εικόνα αναγνώρισης.</strong> Ανοίξτε την παρακάτω φωτογραφία του τόπου σε δεύτερη οθόνη ή εκτυπώστε την.</li>
+            <li><strong>Πατήστε «Έναρξη AR».</strong> Χρησιμοποιήστε τη συσκευή με την οποία θα σαρώσετε τη φωτογραφία και επιτρέψτε την πρόσβαση στην κάμερα.</li>
+            <li><strong>Στρέψτε την κάμερα στη φωτογραφία.</strong> Η εφαρμογή αναγνωρίζει την εικόνα του τόπου και εμφανίζει επάνω της τις φωτογραφίες. Κρατήστε την ολόκληρη στο πλάνο, χωρίς αντανακλάσεις.</li>
           </ol>
           {% if ar_qr %}
           <div class="ar-phone">
             <div class="ar-phone-copy">
-              <h3>Ανοίξτε την εμπειρία στο κινητό σας</h3>
-              <p>Σαρώστε το QR με το κινητό σας και κρατήστε την εικόνα αναγνώρισης ανοιχτή σε αυτή την οθόνη.</p>
+              <h3>Ανοίξτε τη σελίδα στο κινητό σας — προαιρετικά</h3>
+              <p>Αν βρίσκεστε σε υπολογιστή, σαρώστε το QR με το κινητό σας για να ανοίξετε την ίδια σελίδα εκεί. Αν έχετε ήδη ανοίξει τη σελίδα στο κινητό σας, συνεχίστε παρακάτω.</p>
+              <p><strong>Το QR είναι μόνο σύνδεσμος προς τη σελίδα.</strong> Δεν ενεργοποιεί την εμπειρία AR. Στο κινητό σας, πατήστε «Έναρξη AR» και σαρώστε τη φωτογραφία αναγνώρισης που ακολουθεί, όχι το QR.</p>
             </div>
-            <a class="ar-qr-link" href="{{ ar_qr.url | escape }}" target="_blank" rel="noopener" aria-label="Ανοίξτε τη δημόσια σελίδα AR: {{ poi_title | escape }}">
-              <img class="ar-qr-image" src="{{ ar_qr.image | relative_url }}" width="196" height="196" alt="QR για την εμπειρία AR: {{ poi_title | escape }}">
+            <a class="ar-qr-link" href="{{ ar_qr.url | escape }}" target="_blank" rel="noopener" aria-label="Ανοίξτε αυτή τη σελίδα AR: {{ poi_title | escape }}">
+              <img class="ar-qr-image" src="{{ ar_qr.image | relative_url }}" width="196" height="196" alt="QR συνδέσμου προς αυτή τη σελίδα AR: {{ poi_title | escape }}">
             </a>
           </div>
           {% endif %}
@@ -46,8 +47,8 @@
         <figure class="surface-panel ar-target">
           <img id="target-image" src="{{ page.asset_path | append: page.target.file | relative_url }}" alt="{{ page.target.caption | escape }} — εικόνα αναγνώρισης AR" width="{{ page.target.pixel_width }}" height="{{ page.target.pixel_height }}">
           <figcaption class="ar-target-caption">
-            <h2>Η εικόνα αναγνώρισης</h2>
-            <p>Αυτή είναι η φωτογραφία που θα αναζητήσει η κάμερα. Χρησιμοποιήστε δεύτερη οθόνη ή ένα εκτυπωμένο αντίγραφο.</p>
+            <h2>Η εικόνα αναγνώρισης για το AR</h2>
+            <p>Αφού πατήσετε «Έναρξη AR», στρέψτε την κάμερα σε αυτή τη φωτογραφία. Προβάλετέ την σε δεύτερη οθόνη ή χρησιμοποιήστε ένα εκτυπωμένο αντίγραφο.</p>
             <div class="button-group">
               <a class="button button-outline" href="{{ page.asset_path | append: page.target.file | relative_url }}" target="_blank" rel="noopener">Άνοιγμα εικόνας ↗</a>
               <a class="button button-outline" href="{{ page.asset_path | append: page.target.file | relative_url }}" download="{{ page.target.file | escape }}">Λήψη εικόνας ↓</a>
@@ -56,8 +57,8 @@
         </figure>
 
         <section class="surface-panel surface-panel-accent content-callout" aria-labelledby="ar-start-title">
-          <h2 id="ar-start-title">Έτοιμοι για την εμπειρία;</h2>
-          <p>Χρειάζεστε συσκευή με κάμερα και την εικόνα αναγνώρισης απέναντί της. Μπορείτε να κλείσετε την εμπειρία οποιαδήποτε στιγμή.</p>
+          <h2 id="ar-start-title">Ξεκινήστε την εμπειρία AR</h2>
+          <p>Πατήστε το κουμπί, επιτρέψτε την κάμερα και στρέψτε τη στην εικόνα αναγνώρισης. Μπορείτε να κλείσετε την εμπειρία οποιαδήποτε στιγμή.</p>
           <div class="button-group">
             <button id="start" class="button button-primary" type="button">Έναρξη AR</button>
             <button id="retry" class="button button-outline" type="button" hidden>Επαναφόρτωση και νέα δοκιμή</button>
@@ -82,26 +83,24 @@
       <a-assets id="photos">
         {% for photo in page.photos %}
         {% if photo.url %}{% assign photo_url = photo.url %}{% else %}{% assign photo_url = page.asset_path | append: photo.file | relative_url %}{% endif %}
-        <img id="photo-{{ forloop.index0 }}" src="{{ photo_url | escape }}" alt="{{ photo.caption | escape }}" crossorigin="anonymous">
+        <img id="photo-{{ forloop.index0 }}" src="{{ photo_url | escape }}" alt="{{ photo.caption | escape }}" data-caption-source="{{ photo.caption_source | escape }}" data-width="{{ photo.width }}" data-height="{{ photo.height }}" crossorigin="anonymous">
         {% endfor %}
       </a-assets>
       <a-camera position="0 0 0" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
-      {% assign columns = page.photos.size | at_most: 3 %}
-      {% assign rows = page.photos.size | plus: columns | minus: 1 | divided_by: columns %}
-      {% assign x_offset = columns | minus: 1 | times: 0.16 %}
-      {% assign y_offset = rows | minus: 1 | times: 0.12 %}
       <a-entity id="anchor" mindar-image-target="targetIndex: 0">
-        <a-plane color="#ffffff" width="{{ columns | times: 0.32 | plus: 0.04 }}" height="{{ rows | times: 0.24 | plus: 0.02 }}" position="0 0 0.01"></a-plane>
-        {% for photo in page.photos %}
-        {% assign column = forloop.index0 | modulo: columns %}
-        {% assign row = forloop.index0 | divided_by: columns %}
-        <a-image src="#photo-{{ forloop.index0 }}"
-          width="{{ photo.width }}" height="{{ photo.height }}"
-          position="{{ column | times: 0.32 | minus: x_offset }} {{ row | times: -0.24 | plus: y_offset }} 0.02"></a-image>
-        {% endfor %}
+        <a-plane id="photo-background" color="#ffffff" width="0.94" height="0.69" position="0 0 0.01"></a-plane>
+        <a-image id="selected-photo" src="#photo-0" width="0.9" height="0.65" position="0 0 0.02"></a-image>
       </a-entity>
     </a-scene>
     <button id="close" class="button" type="button">Κλείσιμο</button>
+    <section id="ar-photo-controls" class="surface-panel" aria-label="Περιήγηση φωτογραφιών">
+      <div class="ar-photo-navigation">
+        <button id="previous-photo" class="button button-outline" type="button" aria-label="Προηγούμενη φωτογραφία">←</button>
+        <span id="photo-counter"></span>
+        <button id="next-photo" class="button button-outline" type="button" aria-label="Επόμενη φωτογραφία">→</button>
+      </div>
+      <p id="photo-caption" aria-live="polite"></p>
+      <a id="photo-caption-source" class="text-link" target="_blank" rel="noopener" hidden>Λεζάντα: Wikipedia ↗</a>
     <details id="credits">
       <summary>Φωτογραφίες και πηγές</summary>
       <p>Μείωση μεγέθους, χωρίς περικοπή. <a href="{{ page.target.source | escape }}" target="_blank" rel="noopener">Εικόνα αναγνώρισης ↗</a> · {% include photo-credit.html photo=page.target %}</p>
@@ -111,6 +110,7 @@
         {% endfor %}
       </ol>
     </details>
+    </section>
   </div>
   <noscript>Για την εμπειρία AR απαιτείται JavaScript.</noscript>
   <script src="{{ '/assets/js/ar.js' | relative_url }}" defer></script>
