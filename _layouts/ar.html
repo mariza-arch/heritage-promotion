@@ -81,6 +81,7 @@
   <div id="viewer" hidden>
     <a-scene embedded mindar-image="imageTargetSrc: {{ page.asset_path | append: 'targets.mind' | relative_url }}; autoStart: false; uiLoading: no; uiError: no" renderer="colorManagement: true; alpha: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets id="photos">
+        <canvas id="photo-canvas" width="1024" height="1024"></canvas>
         {% for photo in page.photos %}
         {% if photo.url %}{% assign photo_url = photo.url %}{% else %}{% assign photo_url = page.asset_path | append: photo.file | relative_url %}{% endif %}
         <img id="photo-{{ forloop.index0 }}" src="{{ photo_url | escape }}" alt="{{ photo.caption | escape }}" data-caption-source="{{ photo.caption_source | escape }}" data-width="{{ photo.width }}" data-height="{{ photo.height }}" crossorigin="anonymous">
@@ -89,7 +90,7 @@
       <a-camera position="0 0 0" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
       <a-entity id="anchor" mindar-image-target="targetIndex: 0">
         <a-plane id="photo-background" color="#ffffff" width="0.94" height="0.69" position="0 0 0.01" visible="false"></a-plane>
-        <a-image id="selected-photo" width="0.9" height="0.65" position="0 0 0.02" visible="false"></a-image>
+        <a-image id="selected-photo" src="#photo-canvas" material="transparent: false" width="0.9" height="0.65" position="0 0 0.02" visible="false"></a-image>
       </a-entity>
     </a-scene>
     <button id="close" class="button" type="button">Κλείσιμο</button>
@@ -114,6 +115,6 @@
     </section>
   </div>
   <noscript>Για την εμπειρία AR απαιτείται JavaScript.</noscript>
-  <script src="{{ '/assets/js/ar.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/ar.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>

@@ -9,20 +9,14 @@ const previousPhoto = document.getElementById('previous-photo');
 const nextPhoto = document.getElementById('next-photo');
 const photoCaptionSource = document.getElementById('photo-caption-source');
 const photoLoadStatus = document.getElementById('photo-load-status');
+const photoCanvas = document.getElementById('photo-canvas');
+const photoContext = photoCanvas.getContext('2d', {alpha: false});
 let selectedIndex = 0;
 let photoRequest = 0;
 
 function setPhotoVisible(visible) {
   selectedPhoto.setAttribute('visible', visible);
   photoBackground.setAttribute('visible', visible);
-}
-
-function revealPhoto() {
-  const photo = photos[selectedIndex];
-  const ready = selectedPhoto.getObject3D('mesh')?.material.map?.image === photo &&
-    photo.complete && photo.naturalWidth > 0;
-  setPhotoVisible(ready);
-  if (ready) photoLoadStatus.textContent = '';
 }
 
 async function showPhoto(index) {
@@ -53,13 +47,18 @@ async function showPhoto(index) {
     selectedPhoto.setAttribute('height', height);
     photoBackground.setAttribute('width', width + 0.04);
     photoBackground.setAttribute('height', height + 0.04);
-    selectedPhoto.setAttribute('src', '#' + photo.id);
-    const textureDeadline = performance.now() + 5000;
-    while (request === photoRequest && selectedPhoto.getObject3D('mesh')?.material.map?.image !== photo) {
-      if (performance.now() > textureDeadline) throw new Error('Texture timeout');
-      await new Promise(resolve => requestAnimationFrame(resolve));
-    }
-    if (request === photoRequest) revealPhoto();
+    // Keep one canvas texture: replacing image sources can leave stale GPU contents.
+    photoContext.clearRect(0, 0, photoCanvas.width, photoCanvas.height);
+    photoContext.fillStyle = '#fff';
+    photoContext.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
+    photoContext.drawImage(photo, 0, 0, photoCanvas.width, photoCanvas.height);
+    const texture = selectedPhoto.getObject3D('mesh').material.map;
+    texture.generateMipmaps = false;
+    texture.minFilter = AFRAME.THREE.LinearFilter;
+    texture.magFilter = AFRAME.THREE.LinearFilter;
+    texture.needsUpdate = true;
+    setPhotoVisible(true);
+    photoLoadStatus.textContent = '';
   } catch {
     if (request !== photoRequest) return;
     photoLoadStatus.textContent = 'Η φωτογραφία δεν φορτώθηκε. Επιλέξτε άλλη φωτογραφία με τα βέλη.';
