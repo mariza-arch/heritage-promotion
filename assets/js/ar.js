@@ -11,8 +11,57 @@ const photoCaptionSource = document.getElementById('photo-caption-source');
 const photoLoadStatus = document.getElementById('photo-load-status');
 const photoCanvas = document.getElementById('photo-canvas');
 const photoContext = photoCanvas.getContext('2d', {alpha: false});
+const photoDisplay = document.getElementById('photo-display');
+const resetZoom = document.getElementById('reset-photo-zoom');
+const pinchPointers = new Map();
+let photoZoom = 1;
+let pinchDistance = 0;
+let pinchStartZoom = 1;
 let selectedIndex = 0;
 let photoRequest = 0;
+
+function setPhotoZoom(value) {
+  photoZoom = Math.max(0.5, Math.min(3, value));
+  photoDisplay.setAttribute('scale', {x: photoZoom, y: photoZoom, z: photoZoom});
+  resetZoom.disabled = Math.abs(photoZoom - 1) < 0.001;
+  resetZoom.textContent = `Επαναφορά zoom (${photoZoom.toLocaleString('el-GR', {maximumFractionDigits: 1})}×)`;
+}
+
+function pointerDistance() {
+  const [a, b] = [...pinchPointers.values()];
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+
+function enablePinchZoom() {
+  const canvas = scene.canvas;
+  canvas.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'touch' || !document.body.classList.contains('active') ||
+        !selectedPhoto.getAttribute('visible') || pinchPointers.size >= 2) return;
+    pinchPointers.set(event.pointerId, {x: event.clientX, y: event.clientY});
+    canvas.setPointerCapture(event.pointerId);
+    if (pinchPointers.size === 2) {
+      pinchDistance = pointerDistance();
+      pinchStartZoom = photoZoom;
+    }
+  });
+  canvas.addEventListener('pointermove', event => {
+    if (!pinchPointers.has(event.pointerId)) return;
+    pinchPointers.set(event.pointerId, {x: event.clientX, y: event.clientY});
+    if (pinchPointers.size === 2 && pinchDistance > 0) {
+      setPhotoZoom(pinchStartZoom * pointerDistance() / pinchDistance);
+    }
+  });
+  const endPointer = event => {
+    if (pinchPointers.delete(event.pointerId)) pinchDistance = 0;
+  };
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(name => canvas.addEventListener(name, endPointer));
+}
+
+resetZoom.addEventListener('click', () => {
+  pinchPointers.clear();
+  pinchDistance = 0;
+  setPhotoZoom(1);
+});
 
 function setPhotoVisible(visible) {
   selectedPhoto.setAttribute('visible', visible);
@@ -69,8 +118,12 @@ async function showPhoto(index) {
 
 previousPhoto.addEventListener('click', () => showPhoto(selectedIndex - 1));
 nextPhoto.addEventListener('click', () => showPhoto(selectedIndex + 1));
-if (scene.hasLoaded) showPhoto(0);
-else scene.addEventListener('loaded', () => showPhoto(0), {once: true});
+function initializePhotos() {
+  showPhoto(0);
+  enablePinchZoom();
+}
+if (scene.hasLoaded) initializePhotos();
+else scene.addEventListener('loaded', initializePhotos, {once: true});
 
 function releaseCamera() {
   const system = scene.systems?.['mindar-image-system'];

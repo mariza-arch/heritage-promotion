@@ -89,8 +89,10 @@
       </a-assets>
       <a-camera position="0 0 0" look-controls="enabled: false" wasd-controls="enabled: false"></a-camera>
       <a-entity id="anchor" mindar-image-target="targetIndex: 0">
+        <a-entity id="photo-display">
         <a-plane id="photo-background" color="#ffffff" width="0.94" height="0.69" position="0 0 0.01" visible="false"></a-plane>
         <a-image id="selected-photo" src="#photo-canvas" material="transparent: false" width="0.9" height="0.65" position="0 0 0.02" visible="false"></a-image>
+        </a-entity>
       </a-entity>
     </a-scene>
     <button id="close" class="button" type="button">Κλείσιμο</button>
@@ -100,6 +102,10 @@
         <span id="photo-counter"></span>
         <button id="next-photo" class="button button-outline" type="button" aria-label="Επόμενη φωτογραφία">→</button>
       </div>
+      <div class="button-group ar-zoom-controls">
+        <button id="reset-photo-zoom" class="button button-outline" type="button" disabled>Επαναφορά zoom (1×)</button>
+      </div>
+      <p class="ar-zoom-hint">Ανοίξτε δύο δάχτυλα για μεγέθυνση ή φέρτε τα κοντά για σμίκρυνση.</p>
       <p id="photo-load-status" role="status" aria-live="polite"></p>
       <p id="photo-caption" aria-live="polite"></p>
       <a id="photo-caption-source" class="text-link" target="_blank" rel="noopener" hidden>Λεζάντα: Wikipedia ↗</a>

@@ -93,6 +93,25 @@ a-scene {
   height: 100%;
 }
 
+#viewer a-scene canvas {
+  touch-action: none;
+}
+
+.ar-zoom-controls {
+  margin-top: 12px;
+}
+
+.ar-zoom-controls .button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.ar-zoom-hint {
+  margin: 8px 0 0;
+  color: #475569;
+  font-size: 0.8rem;
+}
+
 .mindar-ui-scanning {
   pointer-events: none;
 }
