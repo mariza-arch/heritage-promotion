@@ -8,22 +8,30 @@ const photoBackground = document.getElementById('photo-background');
 const previousPhoto = document.getElementById('previous-photo');
 const nextPhoto = document.getElementById('next-photo');
 const photoCaptionSource = document.getElementById('photo-caption-source');
+const photoLoadStatus = document.getElementById('photo-load-status');
 let selectedIndex = 0;
+let photoRequest = 0;
 
-function showPhoto(index) {
+function setPhotoVisible(visible) {
+  selectedPhoto.setAttribute('visible', visible);
+  photoBackground.setAttribute('visible', visible);
+}
+
+function revealPhoto() {
+  const photo = photos[selectedIndex];
+  const ready = selectedPhoto.getObject3D('mesh')?.material.map?.image === photo &&
+    photo.complete && photo.naturalWidth > 0;
+  setPhotoVisible(ready);
+  if (ready) photoLoadStatus.textContent = '';
+}
+
+async function showPhoto(index) {
   if (!photos.length) return;
+  const request = ++photoRequest;
   selectedIndex = Math.max(0, Math.min(index, photos.length - 1));
   const photo = photos[selectedIndex];
-  const ratio = photo.naturalWidth && photo.naturalHeight
-    ? photo.naturalWidth / photo.naturalHeight
-    : Number(photo.dataset.width) / Number(photo.dataset.height) || 1;
-  const width = Math.min(0.9, 0.65 * ratio);
-  const height = width / ratio;
-  selectedPhoto.setAttribute('src', '#' + photo.id);
-  selectedPhoto.setAttribute('width', width);
-  selectedPhoto.setAttribute('height', height);
-  photoBackground.setAttribute('width', width + 0.04);
-  photoBackground.setAttribute('height', height + 0.04);
+  setPhotoVisible(false);
+  photoLoadStatus.textContent = 'Φόρτωση φωτογραφίας…';
   document.getElementById('photo-counter').textContent = `Φωτογραφία ${selectedIndex + 1} / ${photos.length}`;
   document.getElementById('photo-caption').textContent = photo.alt;
   photoCaptionSource.hidden = !photo.dataset.captionSource;
@@ -31,16 +39,39 @@ function showPhoto(index) {
   else photoCaptionSource.removeAttribute('href');
   previousPhoto.disabled = selectedIndex === 0;
   nextPhoto.disabled = selectedIndex === photos.length - 1;
+  let timeout;
+  try {
+    await Promise.race([
+      photo.decode(),
+      new Promise((_, reject) => { timeout = setTimeout(() => reject(new Error('Photo timeout')), 15000); })
+    ]);
+    if (request !== photoRequest) return;
+    const ratio = photo.naturalWidth / photo.naturalHeight;
+    const width = Math.min(0.9, 0.65 * ratio);
+    const height = width / ratio;
+    selectedPhoto.setAttribute('width', width);
+    selectedPhoto.setAttribute('height', height);
+    photoBackground.setAttribute('width', width + 0.04);
+    photoBackground.setAttribute('height', height + 0.04);
+    selectedPhoto.setAttribute('src', '#' + photo.id);
+    const textureDeadline = performance.now() + 5000;
+    while (request === photoRequest && selectedPhoto.getObject3D('mesh')?.material.map?.image !== photo) {
+      if (performance.now() > textureDeadline) throw new Error('Texture timeout');
+      await new Promise(resolve => requestAnimationFrame(resolve));
+    }
+    if (request === photoRequest) revealPhoto();
+  } catch {
+    if (request !== photoRequest) return;
+    photoLoadStatus.textContent = 'Η φωτογραφία δεν φορτώθηκε. Επιλέξτε άλλη φωτογραφία με τα βέλη.';
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 previousPhoto.addEventListener('click', () => showPhoto(selectedIndex - 1));
 nextPhoto.addEventListener('click', () => showPhoto(selectedIndex + 1));
-photos.forEach((photo, index) => {
-  photo.addEventListener('load', () => {
-    if (index === selectedIndex) showPhoto(selectedIndex);
-  });
-});
-showPhoto(0);
+if (scene.hasLoaded) showPhoto(0);
+else scene.addEventListener('loaded', () => showPhoto(0), {once: true});
 
 function releaseCamera() {
   const system = scene.systems?.['mindar-image-system'];

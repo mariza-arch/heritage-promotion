@@ -142,6 +142,15 @@ body.active #status {
   color: var(--color-navy);
 }
 
+#photo-load-status:empty {
+  display: none;
+}
+
+#photo-load-status {
+  margin: 12px 0;
+  color: var(--color-navy);
+}
+
 #photo-caption-source,
 #credits {
   display: block;
