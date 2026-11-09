@@ -46,7 +46,8 @@ function get_wikidatum(id){
           }
 
           let image = get_json_value(['entities',id,'claims','P18', 0,'mainsnak', 'datavalue', 'value'], data);
-          get_thumbnail(image, 960);
+          if (image)
+            get_thumbnail(image, 960);
 
         })
         .fail(function( jqxhr, textStatus, error ) {
@@ -80,20 +81,25 @@ function get_official_website(entity) {
 function get_thumbnail(photoname, size){
     photoname = photoname.replaceAll(' ', '_');
     console.log('Getting '+size+'px thumb of: ', photoname);
-    // WikiMedia API based:
-    let url = `https://api.wikimedia.org/core/v1/commons/file/File:${photoname}`;
+    // Commons imageinfo API: returns a ready-made thumbnail url for the requested width
+    let title = encodeURIComponent('File:'+photoname);
+    let url = `https://commons.wikimedia.org/w/api.php?action=query&titles=${title}&prop=imageinfo&iiprop=url|user&iiurlwidth=${size}&format=json&origin=*`;
     var jqxhr = $.getJSON( url, function(data) {
-        let credit = get_json_value(['latest','user','name'], data);
+        // Response is keyed by page id, which is not known in advance
+        let pages = get_json_value(['query','pages'], data);
+        let page = pages ? Object.values(pages)[0] : null;
+        let info = page ? get_json_value(['imageinfo', 0], page) : null;
+        if ( !info )
+            return;
+
+        let credit = info.user;
         // console.log('Photo credit: ', credit);
 
-        let thumbname = get_json_value(['thumbnail','url'], data);
-        if ( thumbname ){
-            let thumbparts = thumbname.split('/');
-            thumbparts.pop();
-            thumbname = thumbparts.join('/');
-            thumbname += ('/'+size+'px-'+photoname);
-            console.log(thumbname);
-            $('#wikidata_img').attr('src', thumbname);
+        // Fall back to the original image if no thumbnail is available
+        let imgurl = info.thumburl || info.url;
+        if ( imgurl ){
+            console.log(imgurl);
+            $('#wikidata_img').attr('src', imgurl);
         }
     })
     .fail(function() {
